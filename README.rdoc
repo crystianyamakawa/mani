@@ -12,6 +12,7 @@ Sistema para controle das areas:
           - Central de Atendimentos
           - Ordem de Serviços
           - Vendas
+    Integração com o Google Agenda e Maps
 
 * Ruby  : 2.3
 * Rails : 4.2.6 com MySql
