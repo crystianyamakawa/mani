@@ -1,0 +1,93 @@
+<%= form_for(@oportunidade) do |f| %>
+  <% if @oportunidade.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@oportunidade.errors.count, "error") %> prohibited this oportunidade from being saved:</h2>
+
+      <ul>
+      <% @oportunidade.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nm_contato %><br>
+    <%= f.text_field :nm_contato %>
+  </div>
+  <div class="field">
+    <%= f.label :tp_retorno %><br>
+    <%= f.text_field :tp_retorno %>
+  </div>
+  <div class="field">
+    <%= f.label :ds_retorno %><br>
+    <%= f.text_field :ds_retorno %>
+  </div>
+  <div class="field">
+    <%= f.label :cliente_id %><br>
+    <%= f.number_field :cliente_id %>
+  </div>
+  <div class="field">
+    <%= f.label :processo_venda_id %><br>
+    <%= f.number_field :processo_venda_id %>
+  </div>
+  <div class="field">
+    <%= f.label :campanha_id %><br>
+    <%= f.number_field :campanha_id %>
+  </div>
+  <div class="field">
+    <%= f.label :oferta_id %><br>
+    <%= f.number_field :oferta_id %>
+  </div>
+  <div class="field">
+    <%= f.label :fase_id %><br>
+    <%= f.number_field :fase_id %>
+  </div>
+  <div class="field">
+    <%= f.label :etapa_id %><br>
+    <%= f.number_field :etapa_id %>
+  </div>
+  <div class="field">
+    <%= f.label :etapa_situacao_id %><br>
+    <%= f.number_field :etapa_situacao_id %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br>
+    <%= f.text_field :status %>
+  </div>
+  <div class="field">
+    <%= f.label :resultado %><br>
+    <%= f.text_field :resultado %>
+  </div>
+  <div class="field">
+    <%= f.label :motivo_resultado_id %><br>
+    <%= f.number_field :motivo_resultado_id %>
+  </div>
+  <div class="field">
+    <%= f.label :pc_evolucao %><br>
+    <%= f.text_field :pc_evolucao %>
+  </div>
+  <div class="field">
+    <%= f.label :pc_sucesso %><br>
+    <%= f.text_field :pc_sucesso %>
+  </div>
+  <div class="field">
+    <%= f.label :responsavel_id %><br>
+    <%= f.number_field :responsavel_id %>
+  </div>
+  <div class="field">
+    <%= f.label :obs %><br>
+    <%= f.text_area :obs %>
+  </div>
+  <div class="field">
+    <%= f.label :created_by %><br>
+    <%= f.text_field :created_by %>
+  </div>
+  <div class="field">
+    <%= f.label :updated_by %><br>
+    <%= f.text_field :updated_by %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

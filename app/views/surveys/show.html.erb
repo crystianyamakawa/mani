@@ -1,0 +1,16 @@
+<p>
+  <strong>Name:</strong>
+  <%= @survey.name %>
+</p>
+<ol>
+  <% for question in @survey.questions%>
+    <li><%=h question.content %>
+      <ol>
+        <% for answer in question.answers%>
+          <li><%=h answer.content %>
+        <% end %>
+      </ol>
+  <% end %>
+</ol>
+<%= link_to 'Editar', edit_survey_path(@survey) %> |
+<%= link_to 'Voltar', surveys_path %>

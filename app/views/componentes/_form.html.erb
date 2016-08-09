@@ -1,0 +1,83 @@
+<%= form_for(@componente) do |f| %>
+  <% if @componente.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@componente.errors.count, "error") %> prohibited this componente from being saved:</h2>
+
+      <ul>
+      <% @componente.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :codigo %><br>
+    <%= f.text_field :codigo %>
+  </div>
+  <div class="field">
+    <%= f.label :descricao %><br>
+    <%= f.text_field :descricao %>
+  </div>
+  <div class="field">
+    <%= f.label :tipo %><br>
+    <%= f.select(:tipo, @tp_componente.map {|s| [s.valor]},:include_blank => true, size: 60 ) %>
+  </div>
+  <div class="field">
+    <%= f.label :marca %><br>
+    <%= f.select(:marca_id, @marcas.map {|s| [s.nome, s.id]},:include_blank => true, size: 60 ) %>
+  </div>
+  <div class="field">
+    <%= f.label :ds_modelo %><br>
+    <%= f.text_field :ds_modelo %>
+  </div>
+  <div class="field">
+    <%= f.label :vl_aquisicao %><br>
+    <%= f.text_field_tag "vl_aquisicao_cur", number_to_currency(@componente.vl_aquisicao),
+                        {:onchange => "currency_to_number(vl_aquisicao_cur, componente_vl_aquisicao)"} %>
+    <%=  f.hidden_field :vl_aquisicao%>
+  </div>
+  <div class="field">
+    <%= f.label :vl_venda %><br>
+    <%= f.text_field_tag "vl_venda_cur", number_to_currency(@componente.vl_venda),
+                        {:onchange => "currency_to_number(vl_venda_cur, componente_vl_venda)"} %>
+    <%=  f.hidden_field :vl_venda%>
+  </div>
+  <div class="field">
+    <%= f.label :vl_locacao %><br>
+    <%= f.text_field_tag "vl_locacao_cur", number_to_currency(@componente.vl_locacao),
+                        {:onchange => "currency_to_number(vl_venda_cur, componente_vl_locacao)"} %>
+    <%=  f.hidden_field :vl_locacao%>  </div>
+  <div class="field">
+    <%= f.label :unidade %><br>
+    <%= f.select(:unidade, @unidades.map {|s| [s.valor]},:include_blank => true, size: 60 ) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :categoria_id %><br>
+    <%= f.select(:categoria_id, @subcategorias.map {|s| [s.nome, s.id]},:include_blank => true, size: 60 ) %></td>
+  </div>
+  <div class="field">
+    <%= f.label :estoque_id %><br>
+    <%= f.select(:estoque_id, @estoques.map {|s| [s.nome, s.id]},:include_blank => true, size: 60 ) %>
+  </div>
+  <div class="field">
+    <%= f.label :nr_patrimonio %><br>
+    <%= f.text_field :nr_patrimonio %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br>
+    <%= f.text_field :status %>
+  </div>
+  <div class="field">
+    <%= f.label :created_by %><br>
+    <%= f.text_field :created_by %>
+  </div>
+  <div class="field">
+    <%= f.label :updated_by %><br>
+    <%= f.text_field :updated_by %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

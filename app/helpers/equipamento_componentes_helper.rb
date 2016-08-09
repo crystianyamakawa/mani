@@ -1,0 +1,2 @@
+module EquipamentoComponentesHelper
+end

@@ -1,0 +1,68 @@
+<!-- Single button -->
+<div class="table-responsive">
+<table class="table table-striped">
+  <tr>
+    <td colspan="3"><strong>Código</strong></td>
+    <td colspan="10" class="text-left"><%= @equipamento.codigo %></td>
+    <td ><strong>Descrição:</strong></td>
+    <td colspan="15"><%= @equipamento.descricao %></td>
+  </tr>
+  <tr>
+        <td colspan="3"><strong>Marca:</strong></td>
+        <td colspan="10" class="text-left"><%= @equipamento.marca.try(:nome) %></td>
+        <td ><strong>Modelo:</strong></td>
+        <td colspan="15"><%= @equipamento.ds_modelo %></td>
+  </tr>
+  <tr>
+      <td colspan="3"><strong>Nr. Patrimonio:</strong></td>
+      <td colspan="10" class="text-left"><%=@equipamento.nr_patrimonio  %></td>
+      <td ><strong>Tipo:</strong></td>
+      <td colspan="15"><%= @equipamento.tipo %></td>
+  </tr>
+
+    <tr>
+          <td colspan="3"><strong>Status:</strong></td>
+          <td colspan="10" class="text-left"><%= @equipamento.status %></td>
+          <td ><strong>Estoque:</strong></td>
+          <td colspan="15" class="text-left"><%= @equipamento.estoque.try(:nome)%></td>
+
+    </tr>
+
+    <tr>
+          <td colspan="3"><strong>Categoria:</strong></td>
+          <td colspan="10"><%= @equipamento.categoriaequipamento.try(:nome) %></td>
+          <td ><strong></strong></td>
+          <td colspan="15" class="text-left"></td>
+
+    </tr>
+    <tr>
+        <td colspan="3"><strong>Valor Aquisição:</strong></td>
+        <td colspan="10" class="text-left"><%= number_to_currency(@equipamento.vl_aquisicao)%></td>
+        <td ><strong>Valor Venda:</strong></td>
+        <td colspan="15"><%= number_to_currency(@equipamento.vl_venda) %></td>
+    </tr>
+    <tr>
+        <td colspan="3"><strong>Valor Locação:</strong></td>
+        <td colspan="10" class="text-left"><%= number_to_currency(@equipamento.vl_locacao)%></td>
+        <td ><strong>Unidade Locação:</strong></td>
+        <td colspan="15"><%= @equipamento.unidade %></td>
+    </tr>
+
+    <tr>
+          <td colspan="3"><strong>Criado Por:</strong></td>
+          <td colspan="10" class="text-left"><%= @equipamento.created_by %></td>
+          <td >  <strong>Atualizado Por:</strong></td>
+          <td colspan="15"><%= @equipamento.updated_by %></td>
+    </tr>
+    <tr>
+          <td colspan="3"><strong>Criado Em:</strong></td>
+          <td colspan="10" class="text-left"><%= @equipamento.created_at.strftime("%d/%m/%Y %H:%M") %></td>
+          <td >  <strong>Atualizado Em:</strong></td>
+          <td colspan="15"><%= @equipamento.updated_at.strftime("%d/%m/%Y %H:%M") %></td>
+    </tr>
+    <tr>
+            <td colspan="3"><strong>Obs:</strong></td>
+            <td colspan="20" class="text-left"><%= @equipamento.obs %></td>
+    </tr>
+</table>
+</div>

@@ -1,0 +1,37 @@
+<%= form_for(@caracteristica) do |f| %>
+  <% if @caracteristica.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@caracteristica.errors.count, "error") %> prohibited this caracteristica from being saved:</h2>
+
+      <ul>
+      <% @caracteristica.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :codigo %><br>
+    <%= f.text_field :codigo %>
+  </div>
+  <div class="field">
+    <%= f.label :descricao %><br>
+    <%= f.text_field :descricao %>
+  </div>
+  <div class="field">
+    <%= f.label :unidade %><br>
+    <%= f.text_field :unidade %>
+  </div>
+  <div class="field">
+    <%= f.label :created_by %><br>
+    <%= f.text_field :created_by %>
+  </div>
+  <div class="field">
+    <%= f.label :updated_by %><br>
+    <%= f.text_field :updated_by %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

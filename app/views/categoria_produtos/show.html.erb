@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @categoria_produto.nome %>
+</p>
+
+<p>
+  <strong>Categoria pai:</strong>
+  <%= @categoria_produto.categoria_pai_id %>
+</p>
+
+<p>
+  <strong>Created by:</strong>
+  <%= @categoria_produto.created_by %>
+</p>
+
+<p>
+  <strong>Updated by:</strong>
+  <%= @categoria_produto.updated_by %>
+</p>
+
+<%= link_to 'Edit', edit_categoria_produto_path(@categoria_produto) %> |
+<%= link_to 'Back', categoria_produtos_path %>

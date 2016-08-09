@@ -1,0 +1,44 @@
+    <div class="list-group-item">
+        <div class="row">
+            <div class="col-xs-4"><strong>Fase:</strong></div>
+            <div class="col-xs-2"><strong>% Processo:</strong></div>
+            <div class="col-xs-4"><strong>Obs:</strong></div>
+        </div>
+        <div class="row">
+          <div class="col-xs-4"><%= f.text_field :nm_fase %></div>
+          <div class="col-xs-2"><%= f.number_field :pc_processo, in: 0..100%></div>
+          <div class="col-xs-3"><%= f.text_field :obs %></div>
+          <div class="col-xs-2"><%= link_to_remove_fields("Remover Fase", f) %></div>
+        </div>
+        </br>
+        <div class="row">
+          <div class="col-xs-1"></div>
+          <div class="col-xs-5"><%= f.label "Etapa:" %></div>
+          <div class="col-xs-3"><%= f.label "Obs:" %></div>
+        </div>
+        <%= f.fields_for :etapas do |e| %>
+             <div class="fields_remove">
+                <div class="row">
+                  <div class="col-xs-1"></div>
+                  <div class="col-xs-5"><%= e.text_field :nm_etapa%></div>
+                  <div class="col-xs-3"><%= e.text_field :obs%></div>
+                  <div class="col-xs-2"><%= link_to_remove_fields("Remover Etapa", e) %> </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-2"></div>
+                  <div class="col-xs-4"><%="Situações:"%></div>
+                </div>
+                    <%= e.fields_for :etapa_situacaos do |s| %>
+                      <div class="fields_remove">
+                            <div class="row">
+                              <div class="field">
+                                <div class="col-xs-2"></div>
+                                <div class="col-xs-3"><%= s.text_field :nm_situacao%></div>
+                                <div class="col-xs-2"><%= link_to_remove_fields("Remover Situacao", s) %></div>
+                              </div>
+                            </div>
+                      </div>
+                    <% end %>
+               </div>
+        <% end %>
+    </div>

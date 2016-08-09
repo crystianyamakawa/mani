@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Fases</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nm fase</th>
+      <th>Nr sequencia</th>
+      <th>Responsavel</th>
+      <th>Pc processo</th>
+      <th>Obs</th>
+      <th>Created by</th>
+      <th>Updated by</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @fases.each do |fase| %>
+      <tr>
+        <td><%= fase.nm_fase %></td>
+        <td><%= fase.nr_sequencia %></td>
+        <td><%= fase.responsavel_id %></td>
+        <td><%= fase.pc_processo %></td>
+        <td><%= fase.obs %></td>
+        <td><%= fase.created_by %></td>
+        <td><%= fase.updated_by %></td>
+        <td><%= link_to 'Show', fase %></td>
+        <td><%= link_to 'Edit', edit_fase_path(fase) %></td>
+        <td><%= link_to 'Destroy', fase, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Fase', new_fase_path %>

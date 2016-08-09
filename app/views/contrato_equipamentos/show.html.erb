@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Contrato:</strong>
+  <%= @contrato_equipamento.contrato_id %>
+</p>
+
+<p>
+  <strong>Equipamento:</strong>
+  <%= @contrato_equipamento.equipamento_id %>
+</p>
+
+<p>
+  <strong>Quantidade:</strong>
+  <%= @contrato_equipamento.quantidade %>
+</p>
+
+<p>
+  <strong>Vl tabela:</strong>
+  <%= @contrato_equipamento.vl_tabela %>
+</p>
+
+<p>
+  <strong>Vl negociado:</strong>
+  <%= @contrato_equipamento.vl_negociado %>
+</p>
+
+<p>
+  <strong>Vl locacao:</strong>
+  <%= @contrato_equipamento.vl_locacao %>
+</p>
+
+<p>
+  <strong>Dt inicio:</strong>
+  <%= @contrato_equipamento.dt_inicio %>
+</p>
+
+<p>
+  <strong>Dt termino:</strong>
+  <%= @contrato_equipamento.dt_termino %>
+</p>
+
+<p>
+  <strong>Created by:</strong>
+  <%= @contrato_equipamento.created_by %>
+</p>
+
+<p>
+  <strong>Updated by:</strong>
+  <%= @contrato_equipamento.updated_by %>
+</p>
+
+<%= link_to 'Edit', edit_contrato_equipamento_path(@contrato_equipamento) %> |
+<%= link_to 'Back', contrato_equipamentos_path %>

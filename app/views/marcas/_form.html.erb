@@ -1,0 +1,29 @@
+<%= form_for(@marca) do |f| %>
+  <% if @marca.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@marca.errors.count, "error") %> prohibited this marca from being saved:</h2>
+
+      <ul>
+      <% @marca.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nome %><br>
+    <%= f.text_field :nome %>
+  </div>
+  <div class="field">
+    <%= f.label 'Criado por' %><br>
+    <%= f.text_field :created_by %>
+  </div>
+  <div class="field">
+    <%= f.label 'Atualizado por' %><br>
+    <%= f.text_field :updated_by %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

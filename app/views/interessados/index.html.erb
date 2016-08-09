@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Interessados</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Objeto</th>
+      <th>Objeto type</th>
+      <th>Nm contato</th>
+      <th>Tp retorno</th>
+      <th>Ds retorno</th>
+      <th>Interessado</th>
+      <th>Papel</th>
+      <th>Obs</th>
+      <th>Created by</th>
+      <th>Updated by</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @interessados.each do |interessado| %>
+      <tr>
+        <td><%= interessado.objeto_id %></td>
+        <td><%= interessado.objeto_type %></td>
+        <td><%= interessado.nm_contato %></td>
+        <td><%= interessado.tp_retorno %></td>
+        <td><%= interessado.ds_retorno %></td>
+        <td><%= interessado.interessado_id %></td>
+        <td><%= interessado.papel %></td>
+        <td><%= interessado.obs %></td>
+        <td><%= interessado.created_by %></td>
+        <td><%= interessado.updated_by %></td>
+        <td><%= link_to 'Show', interessado %></td>
+        <td><%= link_to 'Edit', edit_interessado_path(interessado) %></td>
+        <td><%= link_to 'Destroy', interessado, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Interessado', new_interessado_path %>

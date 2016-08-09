@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Ordemservico:</strong>
+  <%= @ordem_servico_iten.ordem_servico_id %>
+</p>
+
+<p>
+  <strong>Servico:</strong>
+  <%= @ordem_servico_iten.servico_id %>
+</p>
+
+<p>
+  <strong>Fornecedor:</strong>
+  <%= @ordem_servico_iten.fornecedor_id %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @ordem_servico_iten.status %>
+</p>
+
+<p>
+  <strong>Obs:</strong>
+  <%= @ordem_servico_iten.obs %>
+</p>
+
+<p>
+  <strong>Created by:</strong>
+  <%= @ordem_servico_iten.created_by %>
+</p>
+
+<p>
+  <strong>Updated by:</strong>
+  <%= @ordem_servico_iten.updated_by %>
+</p>
+
+<%= link_to 'Edit', edit_ordem_servico_iten_path(@ordem_servico_iten) %> |
+<%= link_to 'Back', ordem_servico_itens_path %>

@@ -1,0 +1,29 @@
+<h3>Inbox</h3>
+<br>
+<table id="inbox" class="display" cellspacing="0" width="100%">
+  <thead>
+           <tr>
+               <th>Objeto</th>
+               <th>Codigo</th>
+               <th>Obs</th>
+               <th>Alterado por</th>
+               <th>Alterado em</th>
+               <th>Ações</th>
+           </tr>
+       </thead>
+
+  <tbody>
+    <% @inboxes.each do |inbox| %>
+      <tr>
+        <td><%= inbox.objeto_descricao %></td>
+        <td><%= inbox.objeto_id %></td>
+        <td><%= inbox.obs %></td>
+        <td><%= inbox.updated_by %></td>
+        <td><%= inbox.updated_at.try(:strftime, "%d/%m/%Y %H:%M:%S") %></td>
+        <td><%= link_to "Mostrar", inbox.objeto, :target => "_blank"  %>
+            <%= link_to "Executado", done_inboxes_path(id: inbox.id)%>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

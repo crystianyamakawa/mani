@@ -1,0 +1,48 @@
+<h3>Componentes</h3>
+
+<div align="left">
+    <%= form_tag '', :method => :get do %>
+      <%= text_field_tag :codigo_componente, nil, :placeholder =>'Informe Codigo...'  %>
+      <%= text_field_tag :nome_componente, nil, :placeholder =>'Informe Componente...'  %>
+      <%= select_tag :tp_componente, options_for_select(@tp_componente.map{|s| s.valor} ),:prompt =>'Informe Tipo Componente...'  %>
+      <!-- select_tag :status, @status,:prompt =>'Informe Status...' -->
+      <%= submit_tag 'Filtar Registros' %>
+    <% end %>
+   <hr>
+</div>
+<div class="container-fluid">
+  <div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Codigo</th>
+        <th>Descrição</th>
+        <th>Tipo</th>
+        <th>Marca</th>
+        <th>Modelo</th>
+        <th colspan="3" class="text-center">Ações</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @componentes.each do |componente| %>
+        <tr>
+          <td><%= componente.codigo %></td>
+          <td><%= componente.descricao %></td>
+          <td><%= componente.tipo %></td>
+          <td><%= componente.marca_id %></td>
+          <td><%= componente.ds_modelo %></td>
+          <td><%= link_to 'Mostrar', componente %></td>
+          <td><%= link_to 'Editar', edit_componente_path(componente) %></td>
+          <td><%= link_to 'Eliminar', componente, method: :delete, data: { confirm: 'Confirma Exclusão?' } %></td>
+        </tr>
+      <% end %>
+      </tbody>
+  </table>
+  </div>
+  <div class="text-center">
+      <%= will_paginate @componentes %>
+  </div>
+
+  <%= link_to 'Novo Componente', new_componente_path %>
+</div>

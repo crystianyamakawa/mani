@@ -1,0 +1,40 @@
+<h2>Categorias de Produto</h2>
+
+<div align="left">
+    <%= form_tag '', :method => :get do %>
+      <%= select_tag :categoria_sup, options_for_select(@categoria_sup.map{|s| s.nome}),:prompt =>'Informe Categoria Superior...'  %>
+      <%= text_field_tag :categoria, nil, :placeholder =>'Informe Categoria...'  %>
+      <%= submit_tag 'Filtar Registros' %>
+    <% end %>
+   <hr>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Categoria Superior</th>
+      <th>Categoria</th>
+      <th colspan="3">Ações</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @categoria_produtos.each do |categoria_produto| %>
+      <tr>
+        <td><%= categoria_produto.categoria_pai.try(:nome) %></td>
+        <td><%= categoria_produto.nome %></td>
+        <td><%= link_to 'Mostrar', categoria_produto %></td>
+        <td><%= link_to 'Editar', edit_categoria_produto_path(categoria_produto) %></td>
+        <td><%= link_to 'Eliminar', categoria_produto, method: :delete, data: { confirm: 'Confirma Exclusão?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<div class="text-center">
+    <%= will_paginate @categoria_produtos %>
+</div>
+<br>
+
+<%= link_to 'Nova Categoria ', new_categoria_produto_path %>

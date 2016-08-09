@@ -1,0 +1,28 @@
+<div class="table-responsive">
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Equipamento</th>
+      <th class="text-center">Nº Patrimonio </th>
+      <th class="text-right">Valor Locação</th>
+      <th class="text-center">Ações</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @contrato_equipamentos.each do |contrato_equipamento| %>
+      <tr>
+        <td><%= contrato_equipamento.equipamento.descricao %></td>
+        <td class="text-center"><%= contrato_equipamento.equipamento.nr_patrimonio %></td>
+        <td class="text-right"><%= contrato_equipamento.vl_locacao %></td>
+        <td><%= link_to 'Mostrar', contrato_equipamento %></td>
+        <td><%= link_to 'Editar', edit_contrato_equipamento_path(contrato_equipamento) %></td>
+        <td><%= link_to 'Eliminar', contrato_equipamento, method: :delete, data: { confirm: 'Confirma a Exclusão?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<br>
+<p style="color=blue"><%= link_to( 'Novo Equipamento no Contrato',  {:controller =>'contrato_equipamentos', :action => 'new' , :contrato_id => @contrato.id}) %>
+</p>

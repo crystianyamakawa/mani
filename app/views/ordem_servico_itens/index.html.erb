@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Ordem_servico_itens</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Ordemservico</th>
+      <th>Servico</th>
+      <th>Fornecedor</th>
+      <th>Status</th>
+      <th>Obs</th>
+      <th>Created by</th>
+      <th>Updated by</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ordem_servico_itens.each do |ordem_servico_iten| %>
+      <tr>
+        <td><%= ordem_servico_iten.ordem_servico_id %></td>
+        <td><%= ordem_servico_iten.servico_id %></td>
+        <td><%= ordem_servico_iten.fornecedor_id %></td>
+        <td><%= ordem_servico_iten.status %></td>
+        <td><%= ordem_servico_iten.obs %></td>
+        <td><%= ordem_servico_iten.created_by %></td>
+        <td><%= ordem_servico_iten.updated_by %></td>
+        <td><%= link_to 'Show', ordem_servico_iten %></td>
+        <td><%= link_to 'Edit', edit_ordem_servico_iten_path(ordem_servico_iten) %></td>
+        <td><%= link_to 'Destroy', ordem_servico_iten, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Ordem servico iten', new_ordem_servico_iten_path %>

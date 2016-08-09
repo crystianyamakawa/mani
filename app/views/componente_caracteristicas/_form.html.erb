@@ -1,0 +1,41 @@
+<%= form_for(@componente_caracteristica) do |f| %>
+  <% if @componente_caracteristica.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@componente_caracteristica.errors.count, "error") %> prohibited this componente_caracteristica from being saved:</h2>
+
+      <ul>
+      <% @componente_caracteristica.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :Componente %><br>
+    <%= f.number_field :componente_id %>
+  </div>
+  <div class="field">
+    <%= f.label :caracteristica_id %><br>
+    <%= f.select :caracteristica_id, @caracteristicas.map{|s| [s.descricao, s.id]} %>
+  </div>
+  <div class="field">
+    <%= f.label :valor %><br>
+    <%= f.text_field :valor %>
+  </div>
+  <div class="field">
+    <%= f.label :unidade %><br>
+    <%= f.text_field :unidade %>
+  </div>
+  <div class="field">
+    <%= f.label :created_by %><br>
+    <%= f.text_field :created_by %>
+  </div>
+  <div class="field">
+    <%= f.label :updated_by %><br>
+    <%= f.text_field :updated_by %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

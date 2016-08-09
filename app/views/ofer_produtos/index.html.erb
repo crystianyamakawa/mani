@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Ofer_produtos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Oferta</th>
+      <th>Produto</th>
+      <th>Vl oferta</th>
+      <th>Obs</th>
+      <th>Created by</th>
+      <th>Updated by</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ofer_produtos.each do |ofer_produto| %>
+      <tr>
+        <td><%= ofer_produto.oferta_id %></td>
+        <td><%= ofer_produto.produto_id %></td>
+        <td><%= ofer_produto.vl_oferta %></td>
+        <td><%= ofer_produto.obs %></td>
+        <td><%= ofer_produto.created_by %></td>
+        <td><%= ofer_produto.updated_by %></td>
+        <td><%= link_to 'Show', ofer_produto %></td>
+        <td><%= link_to 'Edit', edit_ofer_produto_path(ofer_produto) %></td>
+        <td><%= link_to 'Destroy', ofer_produto, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Ofer produto', new_ofer_produto_path %>

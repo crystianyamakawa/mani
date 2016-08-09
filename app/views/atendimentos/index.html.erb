@@ -1,0 +1,44 @@
+<h3>Atendimentos</h3>
+<div align="left">
+    <%= form_tag '', :method => :get do %>
+      <%= text_field_tag :protocolo,nil, :placeholder =>'Informe Protocolo...'  %>
+      <%= text_field_tag :contato, nil, :placeholder =>'Informe Contato...'  %>
+      <%= text_field_tag :status, nil, :placeholder =>'Informe Status...'  %>
+      <%= submit_tag 'Filtar Registros' %>
+    <% end %>
+   <hr>
+</div>
+<div class="table-responsive">
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Protocolo</th>
+      <th>Contato</th>
+      <th>Tipo Atendimento</th>
+      <th>Motivo Atendimento</th>
+      <th>Status</th>
+      <th colspan="3" class="text-center">Ações</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @atendimentos.each do |atendimento| %>
+      <tr>
+        <td><%= atendimento.nr_protocolo %></td>
+        <td><%= atendimento.nm_contato %></td>
+        <td><%= atendimento.motivo.descricao %></td>
+        <td><%= atendimento.submotivo.descricao %></td>
+        <td><%= atendimento.status %></td>
+        <td><%= link_to 'Mostrar', atendimento %></td>
+        <td><%= link_to 'Editar', edit_atendimento_path(atendimento) %></td>
+        <td><%= link_to 'Eliminar', atendimento, method: :delete, data: { confirm: 'Confirma Exclusão?' } %></td>
+      </tr>
+    <% end %>
+    </tbody>
+</table>
+</div>
+<div class="text-center">
+    <%= will_paginate @atendimentos %>
+</div>
+
+<%= link_to 'Novo Atendimento', new_atendimento_path %>

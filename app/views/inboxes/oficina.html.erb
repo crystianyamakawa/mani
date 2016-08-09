@@ -1,0 +1,27 @@
+<h3>Inbox - Oficina</h3>
+<br>
+<table id="inbox" class="display" cellspacing="0" width="100%">
+  <thead>
+           <tr>
+               <th>Protocolo</th>
+               <th>Contato</th>
+               <th>Status</th>
+               <th>Responsavel</th>
+               <th>Ações</th>
+           </tr>
+       </thead>
+
+  <tbody>
+    <% @inboxes.each do |inbox| %>
+      <tr>
+        <td><%= inbox.objeto.try(:nr_protocolo) %></td>
+        <td><%= inbox.objeto.try(:nm_contato) %></td>
+        <td><%= inbox.objeto.try(:status) %></td>
+        <td><%= inbox.objeto.try(:responsavel) %></td>
+        <td><%= link_to "Mostrar", inbox.objeto, :target => "_blank"  %>
+            <%= link_to "Executado", done_inboxes_path(id: inbox.id, inbox: "oficina")%>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

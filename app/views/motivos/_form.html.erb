@@ -1,0 +1,61 @@
+<%= form_for(@motivo) do |f| %>
+  <% if @motivo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@motivo.errors.count, "error") %> prohibited this motivo from being saved:</h2>
+
+      <ul>
+      <% @motivo.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label "Motivo Superior" %><br>
+    <%= f.select(:motivo_id, @motivo_sup.map {|s| [s.descricao, s.id]},:include_blank => true, size: 60 ) %>
+  </div>
+  <div class="field">
+    <%= f.label "Motivo" %><br>
+    <%= f.text_field :descricao %>
+  </div>
+  <div class="field">
+    <%= f.label "Escalonamento 1" %><br>
+    <%= f.select(:setor_1, @setor.map {|s| [s.valor]},:include_blank => true, size: 60 ) %>
+  </div>
+  <div class="field">
+    <%= f.label "Prazo 1 em minutos " %><br>
+    <%= f.number_field :prazo_1 %>
+  </div>
+  <div class="field">
+    <%= f.label "Escalonamento 2" %><br>
+    <%= f.select(:setor_2, @setor.map {|s| [s.valor]},:include_blank => true, size: 60 ) %>
+  </div>
+  <div class="field">
+    <%= f.label "Prazo 2 em minutos" %><br>
+    <%= f.number_field :prazo_2 %>
+  </div>
+  <div class="field">
+    <%= f.label "Escalonamento 3" %><br>
+    <%= f.select(:setor_3, @setor.map {|s| [s.valor]},:include_blank => true, size: 60 ) %>
+  </div>
+  <div class="field">
+    <%= f.label "Prazo 3 em minutos" %><br>
+    <%= f.number_field :prazo_3 %>
+  </div>
+  <div class="field">
+    <%= f.label :obs %><br>
+    <%= f.text_area :obs %>
+  </div>
+  <div class="field">
+    <%= f.label :created_by %><br>
+    <%= f.text_field :created_by %>
+  </div>
+  <div class="field">
+    <%= f.label :updated_by %><br>
+    <%= f.text_field :updated_by %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

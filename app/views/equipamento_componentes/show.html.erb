@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Equipamento:</strong>
+  <%= @equipamento_componente.equipamento_id %>
+</p>
+
+<p>
+  <strong>Componente:</strong>
+  <%= @equipamento_componente.componente_id %>
+</p>
+
+<p>
+  <strong>Quantidade:</strong>
+  <%= @equipamento_componente.quantidade %>
+</p>
+
+<p>
+  <strong>Created by:</strong>
+  <%= @equipamento_componente.created_by %>
+</p>
+
+<p>
+  <strong>Updated by:</strong>
+  <%= @equipamento_componente.updated_by %>
+</p>
+
+<%= link_to 'Edit', edit_equipamento_componente_path(@equipamento_componente) %> |
+<%= link_to 'Back', equipamento_componentes_path %>

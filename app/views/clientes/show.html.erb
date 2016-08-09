@@ -1,0 +1,83 @@
+<h2>Consulta de Cliente</h2><br>
+
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span2">
+      <!--Dados do Cliente content-->
+
+      <div class="table-responsive">
+      <table class = "table table-striped">
+        <tr>
+          <td colspan="2"><strong>Nome:</strong></td>
+          <td class="text-left"> <%= @cliente.nome %></td>
+          <td ><strong>Tp Pessoa:</strong></td>
+          <td colspan="15"><%= @cliente.tp_pessoa %></td>
+
+        </tr>
+        <!--tr>
+            <td colspan="2"><strong>Dt Nascimento:</strong></td>
+            <td colspan="10" class="text-left"><= @cliente.dt_nascimento.strftime("%d/%m/%Y") ></td>
+        </tr-->
+        <tr>
+            <% if @cliente.tp_pessoa == 'Fisica' %>
+                <td colspan="2"><strong>CPF:</strong></td>
+                <td  class="text-left"><%= @cliente.nr_cpf %></td>
+                <td ><strong></strong></td>
+                <td colspan="15" class="text-left"></td>
+            <% else %>
+              <td colspan="2"><strong>CNPJ:</strong></td>
+              <td  class="text-left"><%= @cliente.nr_cnpj %></td>
+              <td ><strong>Insc. Estadual:</strong></td>
+              <td colspan="15" class="text-left"><%= @cliente.nr_insc_estadual %></td>
+            <% end %>
+
+        </tr>
+        <tr>
+              <td colspan="2"><strong>Telefone:</strong></td>
+              <td class="text-left"><%= @cliente.nr_telefone %></td>
+              <td ><strong>Telefone 2:</strong></td>
+              <td colspan="15" class="text-left"><%=  @cliente.nr_telefone2  %></t>
+        </tr>
+        <tr>
+              <td colspan="2"><strong>Rua:</strong></td>
+              <td class="text-left"><%= @cliente.rua %></td>
+              <td ><strong>Numero:</strong></td>
+              <td colspan="15" class="text-left"><%=  @cliente.nr_endereco  %></t>
+        </tr>
+          <tr>
+                <td colspan="2"><strong>Compl:</strong></td>
+                <td class="text-left"><%= @cliente.complemento %></td>
+                <td ><strong>Bairro:</strong></td>
+                <td colspan="15" class="text-left"><%= @cliente.bairro %></td>
+          </tr>
+            <tr>
+                  <td colspan="2"><strong>Cep:</strong></td>
+                  <td class="text-left"><%= @cliente.cep %></td>
+                  <td ><strong>Cidade:</strong></td>
+                  <td class="text-left"><%= @cliente.cidade %></td>
+                  <td colspan="2"><strong>UF:</strong></td>
+                  <td class="text-left" colspan="15"><%= @cliente.uf %></td>
+            </tr>
+            <tr>
+                  <td colspan="2"><strong>Cliente:</strong></td>
+                  <td class="text-left"><%= check_box_tag "cliente", "fg_cliente", @cliente.fg_cliente %></td>
+                  <td ><strong>Fornecedor:</strong></td>
+                  <td class="text-left" colspan="15"><%= check_box_tag "fornecedor", "fg_fornecedor", @cliente.fg_fornecedor  %></td>
+
+            </tr>
+      </table >
+    </div >
+
+    </div>
+    <br>
+    <%= link_to 'Editar', edit_cliente_path(@cliente) %> |
+    <%= link_to 'Voltar', clientes_path %>
+    <!-- <a href=<%= edit_cliente_path(@cliente) %> class="btn btn-primary btn-large">
+    Editar
+    </a> -->
+
+  </div>
+</div>
+</br>
+<%= render(:partial => "tabs", :locals => {:cliente => @cliente}) %>
+</div>

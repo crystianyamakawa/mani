@@ -1,0 +1,64 @@
+<h2>Componente
+  <div class="btn-group pull-right">
+      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Ações  <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <li><%= link_to 'Editar Componente', edit_componente_path(@componente) %></li>
+        <li><%= link_to 'Voltar Lista Proutos', componentes_path %></li>
+        </ul>
+  </div>
+</h2>
+
+<div class="table-responsive ">
+<table class="table table-striped" >
+  <tr>
+    <td colspan="3"><strong>Tipo Componente:</strong></td>
+    <td colspan="10" class="text-left"><%= @componente.tipo%></td>
+    <td ><strong>Codigo:</strong></td>
+    <td colspan="15"><%= @componente.codigo %></td>
+  </tr>
+
+  <tr>
+      <td colspan="3"><strong>Marca:</strong></td>
+      <td colspan="10" class="text-left"><%= @componente.marca.try(:nome) %></td>
+      <td ><strong>Modelo:</strong></td>
+      <td colspan="15"><%= @componente.ds_modelo %></td>
+  </tr>
+  <tr>
+    <td colspan="3"><strong>Descricao:</strong></td>
+    <td colspan="10" class="text-left"><%= @componente.descricao %></td>
+    <td ><strong>Unidade:</strong></td>
+    <td colspan="15"><%= @componente.unidade %></td>
+  </tr>
+  <tr>
+      <td colspan="3"><strong>Valor Aquisição:</strong></td>
+      <td colspan="10" class="text-left"><%= number_to_currency(@componente.vl_aquisicao)%></td>
+      <td ><strong>Valor Venda:</strong></td>
+      <td colspan="15"><%= number_to_currency(@componente.vl_venda) %></td>
+  </tr>
+
+  <tr>
+      <!--td colspan="3"><strong>Categoria:</strong></td>
+      <td colspan="10" class="text-left"><%= @componente.categoria_pai_id%></td-->
+      <td colspan="3"><strong>Categoria:</strong></td>
+      <td colspan="10"><%= @componente.categoriacomponente.try(:nome) %></td>
+      <td ><strong>Estoque:</strong></td>
+      <td colspan="15" class="text-left"><%= @componente.estoque.try(:nome)%></td>  </tr>
+
+    <tr>
+          <td colspan="3"><strong>Criado Por:</strong></td>
+          <td colspan="10" class="text-left"><%= @componente.created_by %></td>
+          <td >  <strong>Atualizado Por:</strong></td>
+          <td colspan="15"><%= @componente.updated_by %></td>
+    <tr>
+    <tr>
+          <td colspan="3"><strong>Criado Em:</strong></td>
+          <td colspan="10" class="text-left"><%= @componente.created_at.try(:strftime, "%d/%m/%Y %H:%M:%S") %></td>
+          <td >  <strong>Atualizado Em:</strong></td>
+          <td colspan="15"><%= @componente.updated_at.try(:strftime, "%d/%m/%Y %H:%M:%S") %></td>
+    <tr>
+
+</table>
+</div>
+<%= render(:partial => "tabs", :locals => {:componente => @componente}) %>

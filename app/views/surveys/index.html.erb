@@ -1,0 +1,25 @@
+<h3>Questionários</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @surveys.each do |survey| %>
+      <tr>
+        <td><%= survey.name %></td>
+        <td><%= link_to 'Mostrar', survey %></td>
+        <td><%= link_to 'Editar', edit_survey_path(survey) %></td>
+        <td><%= link_to 'Eliminar', survey, method: :delete, data: { confirm: 'Confirma Exclusão?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Novo Questionário', new_survey_path %>

@@ -1,0 +1,57 @@
+<%= form_for(@ofertum) do |f| %>
+  <% if @ofertum.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ofertum.errors.count, "error") %> prohibited this ofertum from being saved:</h2>
+
+      <ul>
+      <% @ofertum.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nm_oferta %><br>
+    <%= f.text_field :nm_oferta %>
+  </div>
+  <div class="field">
+    <%= f.label :campanha_id %><br>
+    <%= f.number_field :campanha_id %>
+  </div>
+  <div class="field">
+    <%= f.label :dt_inicio %><br>
+    <%= f.datetime_select :dt_inicio %>
+  </div>
+  <div class="field">
+    <%= f.label :dt_termino %><br>
+    <%= f.datetime_select :dt_termino %>
+  </div>
+  <div class="field">
+    <%= f.label :vl_oferta %><br>
+    <%= f.text_field :vl_oferta %>
+  </div>
+  <div class="field">
+    <%= f.label :vl_desconto %><br>
+    <%= f.text_field :vl_desconto %>
+  </div>
+  <div class="field">
+    <%= f.label :pc_desconto %><br>
+    <%= f.text_field :pc_desconto %>
+  </div>
+  <div class="field">
+    <%= f.label :obs %><br>
+    <%= f.text_area :obs %>
+  </div>
+  <div class="field">
+    <%= f.label :created_by %><br>
+    <%= f.text_field :created_by %>
+  </div>
+  <div class="field">
+    <%= f.label :updated_by %><br>
+    <%= f.text_field :updated_by %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

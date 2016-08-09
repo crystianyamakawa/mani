@@ -1,0 +1,27 @@
+
+<table class="table table-striped" >
+  <thead >
+    <th>Serviço</th>
+    <th>Fornecedor</th>
+    <th>Status</th>
+    <th>Obs</th>
+    <th colspan="3">Ações</th>
+
+  </thead>
+  <tbody>
+    <% @ordem_servico_itens.each do |item| %>
+        <tr>
+            <td><%= item.servico.descricao %></td>
+            <td><%= item.fornecedor.try(:nome) %></td>
+            <td><%= item.status %></td>
+            <td><%= item.obs %></td>
+            <td><%= link_to 'Mostrar', item,:target =>"_blank" %></td>
+            <td><%= link_to 'Editar', edit_ordem_servico_iten_path(item),:target =>"_blank" %></td>
+            <td><%= link_to 'Eliminar', item, method: :delete, data: { confirm: 'Confirma Exclusão?' } %></td>
+        </tr>
+    <% end %>
+  </tbody>
+  </table>
+
+<%= link_to( 'Novo Item',  {:controller =>'ordem_servico_itens', :action => 'new',
+                            :ordem_servico_id => @ordem_servico.id }, :target =>"_blank") %>

@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Oferta:</strong>
+  <%= @ofer_produto.oferta_id %>
+</p>
+
+<p>
+  <strong>Produto:</strong>
+  <%= @ofer_produto.produto_id %>
+</p>
+
+<p>
+  <strong>Vl oferta:</strong>
+  <%= @ofer_produto.vl_oferta %>
+</p>
+
+<p>
+  <strong>Obs:</strong>
+  <%= @ofer_produto.obs %>
+</p>
+
+<p>
+  <strong>Created by:</strong>
+  <%= @ofer_produto.created_by %>
+</p>
+
+<p>
+  <strong>Updated by:</strong>
+  <%= @ofer_produto.updated_by %>
+</p>
+
+<%= link_to 'Edit', edit_ofer_produto_path(@ofer_produto) %> |
+<%= link_to 'Back', ofer_produtos_path %>

@@ -1,0 +1,34 @@
+<%= form_for(@categoria_produto) do |f| %>
+  <% if @categoria_produto.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@categoria_produto.errors.count, "error") %> prohibited this categoria_produto from being saved:</h2>
+
+      <ul>
+      <% @categoria_produto.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label "Categoria Superior"%><br>
+    <%= f.select(:categoria_pai_id, @categoria_pai.map {|s| [s.nome, s.id]},:include_blank => true, size: 60 ) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Categoria %><br>
+    <%= f.text_field :nome %>
+  </div>
+  <div class="field">
+    <%= f.label :created_by %><br>
+    <%= f.text_field :created_by %>
+  </div>
+  <div class="field">
+    <%= f.label :updated_by %><br>
+    <%= f.text_field :updated_by %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

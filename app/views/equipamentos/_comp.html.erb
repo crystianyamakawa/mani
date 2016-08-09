@@ -1,0 +1,26 @@
+
+<div class="table-responsive">
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th class="text-left">Componente</th>
+      <th class="text-center">Quantidade</th>
+      <th class="text-center" colspan="3">Ações</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @componentes.each do |componente| %>
+      <tr>
+        <td><%= componente.componente.descricao %></td>
+        <td class="text-center"><%= componente.quantidade %></td>
+        <td><%= link_to 'Mostrar', equipamento_componente_path %></td>
+        <td><%= link_to 'Editar', edit_equipamento_componente_path(componente) %></td>
+        <td><%= link_to 'Eliminar', componente, method: :delete, data: { confirm: 'Confirma a Exclusão?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<br>
+<p style="color=blue"><%= link_to( 'Novo Componente',  {:controller =>'equipamento_componentes', :action => 'new' , :equipamento => @equipamento}) %>

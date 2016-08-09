@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Etapas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Fase</th>
+      <th>Nm etapa</th>
+      <th>Nr sequencia</th>
+      <th>Responsavel</th>
+      <th>Obs</th>
+      <th>Created by</th>
+      <th>Updated by</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @etapas.each do |etapa| %>
+      <tr>
+        <td><%= etapa.fase_id %></td>
+        <td><%= etapa.nm_etapa %></td>
+        <td><%= etapa.nr_sequencia %></td>
+        <td><%= etapa.responsavel_id %></td>
+        <td><%= etapa.obs %></td>
+        <td><%= etapa.created_by %></td>
+        <td><%= etapa.updated_by %></td>
+        <td><%= link_to 'Show', etapa %></td>
+        <td><%= link_to 'Edit', edit_etapa_path(etapa) %></td>
+        <td><%= link_to 'Destroy', etapa, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Etapa', new_etapa_path %>

@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Opp_produtos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Oportunidade</th>
+      <th>Produto</th>
+      <th>Vl negociado</th>
+      <th>Prazo entrega</th>
+      <th>Dt entrega</th>
+      <th>Obs</th>
+      <th>Created by</th>
+      <th>Updated by</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @opp_produtos.each do |opp_produto| %>
+      <tr>
+        <td><%= opp_produto.oportunidade_id %></td>
+        <td><%= opp_produto.produto_id %></td>
+        <td><%= opp_produto.vl_negociado %></td>
+        <td><%= opp_produto.prazo_entrega %></td>
+        <td><%= opp_produto.dt_entrega %></td>
+        <td><%= opp_produto.obs %></td>
+        <td><%= opp_produto.created_by %></td>
+        <td><%= opp_produto.updated_by %></td>
+        <td><%= link_to 'Show', opp_produto %></td>
+        <td><%= link_to 'Edit', edit_opp_produto_path(opp_produto) %></td>
+        <td><%= link_to 'Destroy', opp_produto, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Opp produto', new_opp_produto_path %>

@@ -1,0 +1,92 @@
+<h3>Ordem Serviço</h3>
+<div class="panel panel-default">
+  <div class="panel-heading">Identificação do Cliente
+    <span class="fa arrow" data-toggle="collapse" data-target="#panelDados" aria-expanded="true" aria-controls="panelDados"></span>
+    <!--button class="btn btn-default" type="button" -->
+  </div>
+  <div class="panel-body" id="panelDados">
+    <div class="row">
+          <div class="col-xs-4"><strong>Nome Contato:</strong> <%= @ordem_servico.nm_contato %></div>
+          <div class="col-xs-4"><strong>Tipo Retorno:</strong> <%= @ordem_servico.tp_retorno %></div>
+          <div class="col-xs-4"><strong>Retornar para:</strong>  <%= @ordem_servico.ds_retorno %></div>
+    </div>
+
+    <div class="row">
+    </br>
+        <div class="col-xs-4"><strong>Cliente:</strong> <%= @ordem_servico.cliente.try(:nome) %></div>
+        <div class="col-xs-4"><strong>Atendimento Pai:</strong> <%= @ordem_servico.atendimento_id %></div>
+        <div class="col-xs-4"><strong>Responsável:</strong> <%= @ordem_servico.responsavel %></div>
+    </div>
+
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">Detalhamento do Atendimento
+    <span class="fa arrow" data-toggle="collapse" data-target="#panelDetalhe" aria-expanded="false" aria-controls="panelDetalhe"></span>
+  </div>
+  <div class="panel-body" id="panelDetalhe" >
+
+    <div class="row">
+          </br>
+          <div class="col-xs-4"><strong>Equipamento:</strong> <%= @ordem_servico.equipamento.try(:descricao) %></div>
+          <div class="col-xs-4"><strong>Latitude:</strong> <%= @ordem_servico.lat %></div>
+          <div class="col-xs-2"><strong>Longitude:</strong> <%= @ordem_servico.long %></div>
+    </div>
+
+
+    <div class="row">
+          </br>
+          <div class="col-xs-4"><strong>Rua:</strong> <%= @ordem_servico.rua %></div>
+          <div class="col-xs-4"><strong>Numero:</strong> <%= @ordem_servico.nr_endereco %></div>
+          <div class="col-xs-2"><strong>Bairro:</strong> <%= @ordem_servico.bairro %></div>
+    </div>
+
+    <div class="row">
+          </br>
+          <div class="col-xs-4"><strong>Cidade:</strong> <%= @ordem_servico.cidade %></div>
+          <div class="col-xs-4"><strong>Cep:</strong> <%= @ordem_servico.cep %></div>
+          <div class="col-xs-2"><strong>UF:</strong> <%= @ordem_servico.uf %></div>
+    </div>
+
+  </div>
+</div>
+<div class="panel panel-default">
+  <div class="panel-heading">Itens
+    <span class="fa arrow" data-toggle="collapse" data-target="#panelItens" aria-expanded="true" aria-controls="panelItens"></span>
+  </div>
+  <div class="panel-body" id="panelItens" >
+    <%= render(:partial => "itens", :locals => {:ordem_servico_itens => @ordem_servico_itens}) %>
+
+  </div>
+</div>
+<div class="panel panel-default">
+  <div class="panel-heading">Notas
+    <span class="fa arrow" data-toggle="collapse" data-target="#panelOBS" aria-expanded="true" aria-controls="panelOBS"></span>
+  </div>
+  <div class="panel-body" id="panelOBS" >
+    <div class="row">
+          <div class="col-xs-2"><strong>Observações:</strong></div>
+          <div class="col-xs-10"><%= @ordem_servico.obs %></div>
+    </div>
+    <div class="row">
+            </br>
+            <div class="col-xs-2"><strong>Criado Por:</strong></div>
+            <div class="col-xs-2"><%= @ordem_servico.created_by %></div>
+            <div class="col-xs-2"><strong>Criado Em:</strong></div>
+            <div class="col-xs-2"><%= @ordem_servico.created_at.try(:strftime, "%d/%m/%Y %H:%M:%S") %></div>
+      </div>
+
+      <div class="row">
+            </br>
+            <div class="col-xs-2"><strong>Atualizado Por:</strong></div>
+            <div class="col-xs-2"><%= @ordem_servico.updated_by %></div>
+            <div class="col-xs-2"><strong>Atualizado Em:</strong></div>
+            <div class="col-xs-2"><%= @ordem_servico.updated_at.try(:strftime, "%d/%m/%Y %H:%M:%S") %></div>
+      </div>
+
+  </div>
+</div>
+
+<%= link_to 'Editar', edit_ordem_servico_path(@ordem_servico) %> |
+<%= link_to 'Voltar', ordem_servicos_path %>

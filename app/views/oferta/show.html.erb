@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nm oferta:</strong>
+  <%= @ofertum.nm_oferta %>
+</p>
+
+<p>
+  <strong>Campanha:</strong>
+  <%= @ofertum.campanha_id %>
+</p>
+
+<p>
+  <strong>Dt inicio:</strong>
+  <%= @ofertum.dt_inicio %>
+</p>
+
+<p>
+  <strong>Dt termino:</strong>
+  <%= @ofertum.dt_termino %>
+</p>
+
+<p>
+  <strong>Vl oferta:</strong>
+  <%= @ofertum.vl_oferta %>
+</p>
+
+<p>
+  <strong>Vl desconto:</strong>
+  <%= @ofertum.vl_desconto %>
+</p>
+
+<p>
+  <strong>Pc desconto:</strong>
+  <%= @ofertum.pc_desconto %>
+</p>
+
+<p>
+  <strong>Obs:</strong>
+  <%= @ofertum.obs %>
+</p>
+
+<p>
+  <strong>Created by:</strong>
+  <%= @ofertum.created_by %>
+</p>
+
+<p>
+  <strong>Updated by:</strong>
+  <%= @ofertum.updated_by %>
+</p>
+
+<%= link_to 'Edit', edit_ofertum_path(@ofertum) %> |
+<%= link_to 'Back', oferta_path %>

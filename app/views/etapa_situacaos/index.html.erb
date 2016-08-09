@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Etapa_situacaos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Etapa</th>
+      <th>Nm situacao</th>
+      <th>Created by</th>
+      <th>Updated by</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @etapa_situacaos.each do |etapa_situacao| %>
+      <tr>
+        <td><%= etapa_situacao.etapa_id %></td>
+        <td><%= etapa_situacao.nm_situacao %></td>
+        <td><%= etapa_situacao.created_by %></td>
+        <td><%= etapa_situacao.updated_by %></td>
+        <td><%= link_to 'Show', etapa_situacao %></td>
+        <td><%= link_to 'Edit', edit_etapa_situacao_path(etapa_situacao) %></td>
+        <td><%= link_to 'Destroy', etapa_situacao, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Etapa situacao', new_etapa_situacao_path %>

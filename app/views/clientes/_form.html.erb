@@ -1,0 +1,68 @@
+<%= form_for(@cliente) do |f| %>
+  <div class="table-responsive">
+  <table class="table table-striped">
+    <tr>
+      <td colspan="2"><strong>Nome:</strong></td>
+      <td colspan="10" class="text-left"> <%= f.text_field( :nome, size: 69) %></td>
+      <td colspan="1"><strong>Tipo Cliente:</strong></td>
+      <td colspan="5" class="text-left"> <%= f.select(:tp_pessoa, @tp_pessoa,:include_blank => true, size: 60 ) %></td>
+    </tr>
+    <tr>
+        <td colspan="2"><strong>Telefone Contato:</strong></td>
+        <td colspan="1" class="text-left"><%= f.text_field(:nr_telefone, {:onchange => "mask_tel( cliente_nr_telefone )"})  %></td>
+        <td colspan="2" class="text-left"><strong>Telefone Contato 2:</strong></td>
+        <td colspan="10" class="text-left"><%= f.text_field(:nr_telefone2, {:onchange =>"mask_tel( cliente_nr_telefone2 )"})  %></td>
+    </tr>
+    <!--tr>
+      <td colspan="2"><strong>Tp Documento:</strong></td>
+      <td class="text-left"><= f.select(:tp_documento, ["RG","CERT. NASCIMENTO","PASSAPORT"]) %></td>
+      <td colspan="2"><strong>Nr Documento:</strong></td>
+      <td class="text-left"><= f.text_field :nr_documento %></td>
+    <tr-->
+    <tr>
+        <td colspan="2"><strong>CPF:</strong></td>
+        <td class="text-left"><%= f.text_field :nr_cpf %></td>
+        <td colspan="2"></td>
+        <td colspan="10"></td>
+    </tr>
+    <tr>
+        <td colspan="2"><strong>CNPJ:</strong></td>
+        <td class="text-left"><%= f.text_field :nr_cnpj %></td>
+        <td colspan="2"><strong>Inscrição Estadual:</strong></td>
+        <td class="text-left" colspan="15"><%= f.text_field :nr_insc_estadual %></td>
+    </tr>
+
+    <tr>
+          <td colspan="2"><strong>Rua:</strong></td>
+          <td class="text-left"><%= f.text_field :rua %></td>
+          <td colspan="2"><strong>Numero:</strong></td>
+          <td class="text-left" colspan="15"><%=  f.text_field :nr_endereco  %></td>
+    </tr>
+      <tr>
+            <td colspan="2"><strong>Compl:</strong></td>
+            <td class="text-left"><%=f.text_field :complemento %></td>
+            <td colspan="2"><strong>Bairro:</strong></td>
+            <td class="text-left"><%= f.text_field :bairro %></td>
+      </tr>
+        <tr>
+              <td colspan="2"><strong>Cep:</strong></td>
+              <td class="text-left"><%=f.text_field :cep, {:onchange =>"mask_cep( cliente_cep )"} %></td>
+              <td colspan="2"><strong>Cidade:</strong></td>
+              <td class="text-left"><%= f.text_field :cidade %></td>
+              <td colspan="2"><strong>UF:</strong></td>
+              <td class="text-left" colspan="15"><%= f.select(:uf, @UFs) %></td>
+        </tr>
+        <tr>
+              <td colspan="2"><strong>Cliente:</strong></td>
+              <td class="text-left"><%=f.check_box :fg_cliente %></td>
+              <td colspan="2"><strong>Fornecedor:</strong></td>
+              <td class="text-left"><%= f.check_box :fg_fornecedor %></td>
+        </tr>
+  </table >
+</div >
+
+  <br>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

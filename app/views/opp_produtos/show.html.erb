@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Oportunidade:</strong>
+  <%= @opp_produto.oportunidade_id %>
+</p>
+
+<p>
+  <strong>Produto:</strong>
+  <%= @opp_produto.produto_id %>
+</p>
+
+<p>
+  <strong>Vl negociado:</strong>
+  <%= @opp_produto.vl_negociado %>
+</p>
+
+<p>
+  <strong>Prazo entrega:</strong>
+  <%= @opp_produto.prazo_entrega %>
+</p>
+
+<p>
+  <strong>Dt entrega:</strong>
+  <%= @opp_produto.dt_entrega %>
+</p>
+
+<p>
+  <strong>Obs:</strong>
+  <%= @opp_produto.obs %>
+</p>
+
+<p>
+  <strong>Created by:</strong>
+  <%= @opp_produto.created_by %>
+</p>
+
+<p>
+  <strong>Updated by:</strong>
+  <%= @opp_produto.updated_by %>
+</p>
+
+<%= link_to 'Edit', edit_opp_produto_path(@opp_produto) %> |
+<%= link_to 'Back', opp_produtos_path %>

@@ -1,0 +1,323 @@
+<%= form_for(@atendimento) do |f| %>
+  <% if @atendimento.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@atendimento.errors.count, "error") %> prohibited this atendimento from being saved:</h2>
+      <ul>
+      <% @atendimento.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">Identificação do Cliente
+      <span class="fa arrow" data-toggle="collapse" data-target="#panelDados" aria-expanded="true" aria-controls="panelDados"></span>
+      <!--button class="btn btn-default" type="button" -->
+    </div>
+    <div class="panel-body" id="panelDados">
+      <div class="row">
+            <div class="col-xs-6"><strong>Nome Contato:</strong></div>
+            <div class="col-xs-2"><strong>Tipo Retorno:</strong></div>
+            <div class="col-xs-4"><strong>Retornar para:</strong></div>
+      </div>
+      <div class="row">
+           <div class="col-xs-6"><%= f.text_field :nm_contato, size: 50 %></div>
+            <div class="col-xs-2"><%= f.select(:tp_retorno, @tp_retorno, :include_blank => true ) %></div>
+            <div class="col-xs-4"> <%= f.text_field :ds_retorno %></div>
+     </div>
+
+        <div class="row">
+        </br>
+          <div class="col-xs-8"><strong>Cliente:</strong></div>
+          <div class="col-xs-4"><strong>Atendimento Pai:</strong></div>
+        </div>
+        <div class="row">
+          <div class="col-xs-8"><%= f.text_field_tag "cliente", @atendimento.cliente.try(:nome)%>
+                                <button type="button" class="btn-small" data-toggle="modal" data-target="#pesquisaCliente">
+                                  <span class="fa fa-search"></span></button>
+                                <%= f.hidden_field :cliente_id %>
+          </div>
+          <div class="col-xs-4"><%= f.text_field :atendimento_id %></div>
+          </div>
+
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">Detalhamento do Atendimento
+      <span class="fa arrow" data-toggle="collapse" data-target="#panelDetalhe" aria-expanded="false" aria-controls="panelDetalhe"></span>
+    </div>
+    <div class="panel-body" id="panelDetalhe" >
+
+      <div class="row">
+            <div class="col-xs-4"><strong>Motivo:</strong></div>
+            <div class="col-xs-4"><strong>Submotivo:</strong></div>
+            <div class="col-xs-2"><strong>Status:</strong></div>
+      </div>
+      <div class="row">
+           <div class="col-xs-4"> <%= f.select :motivo_id, options_for_select(@motivos.collect { |motivo|
+                                                           [motivo.descricao, motivo.id] }, 1),
+                                                           {},
+                                                           { id: 'motivos_select' } %>
+           </div>
+            <div class="col-xs-4">
+                <%= f.select :submotivo_id, options_for_select(@submotivos.collect { |submotivo|
+                  [submotivo.descricao, submotivo.id] }, 0), {}, { id: 'submotivos_select' } %>
+            </div>
+            <div class="col-xs-2"> <%= f.select :status, @status %></div>
+      </div>
+
+      <div class="row">
+            </br>
+            <div class="col-xs-4"><strong>Equipamento:</strong></div>
+            <div class="col-xs-4"><strong>Latitude:</strong></div>
+            <div class="col-xs-2"><strong>Longitude:</strong></div>
+      </div>
+      <div class="row">
+            <div class="col-xs-4"><%= f.text_field_tag "equipamento", @atendimento.equipamento.try(:descricao)%>
+                                    <button type="button" class="btn-small" data-toggle="modal"
+                                            data-target="#pesquisaEquipamento">
+                                      <span class="fa fa-search"></span></button>
+              <%= f.hidden_field :equipamento_id %>
+            </div>
+            <div class="col-xs-4"><%= f.text_field :lat %></div>
+            <div class="col-xs-4"><%= f.text_field :long %>
+                                  <button type="button" class="btn-small">
+                                   <%= link_to "...", AppPath + '/map',:atendimento_id => @atendimento.id,:target =>"_blank"  %></button>
+            </div>
+      </div>
+
+      <div class="row">
+            </br>
+            <div class="col-xs-4"><strong>Rua:</strong></div>
+            <div class="col-xs-4"><strong>Numero:</strong></div>
+            <div class="col-xs-2"><strong>Bairro:</strong></div>
+      </div>
+      <div class="row">
+            <div class="col-xs-4"><%= f.text_field :rua, size: 40  %></div>
+            <div class="col-xs-4"><%= f.text_field :nr_endereco %></div>
+            <div class="col-xs-2"><%= f.text_field :bairro %></div>
+      </div>
+      <div class="row">
+            </br>
+            <div class="col-xs-4"><strong>Cidade:</strong></div>
+            <div class="col-xs-4"><strong>Cep:</strong></div>
+            <div class="col-xs-2"><strong>UF:</strong></div>
+      </div>
+      <div class="row">
+            <div class="col-xs-4"><%= f.text_field :cidade, size: 40  %></div>
+            <div class="col-xs-4"><%= f.text_field :cep %> <button class="btn-small">...</button></div>
+            <div class="col-xs-2"><%= f.select :uf, @UFs, :include_blank => true %></div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">Dados de Fechamento
+      <span class="fa arrow" data-toggle="collapse" data-target="#panelResolucao" aria-expanded="true" aria-controls="panelResolucao"></span>
+    </div>
+    <div class="panel-body collapse" id="panelResolucao" >
+      <div class="row">
+            <div class="col-xs-4"><strong>Resolução:</strong></div>
+            <div class="col-xs-4"><strong>Data Fechamento:</strong></div>
+      </div>
+      <div class="row">
+            <div class="col-xs-4"><%= f.text_field_tag "resolucao", @atendimento.resolucao.try(:descricao) %>
+                                      <button type="button" class="btn-small" data-toggle="modal"
+                                              data-target="#pesquisaResolucao">
+                                        <span class="fa fa-search"></span></button>
+                <%= f.hidden_field :resolucao_id %>
+
+            </div>
+            <div class="col-xs-4"><%= f.date_select :dt_fechamento %></div>
+      </div>
+      <div class="row">
+      </br>
+            <div class="col-xs-2"><strong>Procedimentos:</strong></div>
+            <div class="col-xs-10"><%= f.text_area_tag "procedimento",@atendimento.resolucao.try(:obs_resolucao), size: "80X10" %></div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">Notas
+      <span class="fa arrow" data-toggle="collapse" data-target="#panelOBS" aria-expanded="true" aria-controls="panelOBS"></span>
+    </div>
+    <div class="panel-body" id="panelOBS" >
+      <div class="row">
+            <div class="col-xs-2"><strong>Observações:</strong></div>
+            <div class="col-xs-10"><%= f.text_area :obs, size: "80X10" %></div>
+      </div>
+      <div class="row">
+              </br>
+              <div class="col-xs-2"><strong>Criado Por:</strong></div>
+              <div class="col-xs-2"><%= @atendimento.created_by %></div>
+              <div class="col-xs-2"><strong>Criado Em:</strong></div>
+              <div class="col-xs-2"><%= @atendimento.created_at.try(:strftime, "%d/%m/%Y %H:%M:%S") %></div>
+        </div>
+
+        <div class="row">
+              </br>
+              <div class="col-xs-2"><strong>Atualizado Por:</strong></div>
+              <div class="col-xs-2"><%= @atendimento.updated_by %></div>
+              <div class="col-xs-2"><strong>Atualizado Em:</strong></div>
+              <div class="col-xs-2"><%= @atendimento.updated_at.try(:strftime, "%d/%m/%Y %H:%M:%S") %></div>
+        </div>
+
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<!--##################################################################################################################-->
+<!-- Modal Pesquisa Clientes -->
+<div class="modal fade" id="pesquisaCliente" tabindex="-1" role="dialog" aria-labelledby="pesquisaCliente"
+                        aria-hidden="true" >
+  <div class="modal-dialog" >
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Cancelar"><span aria-hidden="true">&times;</span></button>
+         <h4 class="modal-title" id="modalClienteLabel">Pesquisa de Clientes</h4>
+      </div>
+      <div class="modal-body" onshow="carregaCliente();">
+        <form >
+          <div class="form-group">
+            <label for="contain">Nome</label>
+            <input class="form-control" type="text" id="pesquisaNome"/>
+          </div>
+          <div class="form-group">
+            <label for="contain">CPF</label>
+            <input class="form-control" type="text" id="pesquisaCpf"/>
+            <label for="contain">CNPJ</label>
+            <input class="form-control" type="text" id="pesquisaCnpj"/>
+          </div>
+          <button type="button" class="btn btn-default" onclick="pesquisa_clientes();">
+                  <span class="fa fa-search"></span></button>
+
+          <table class="table table-striped" id="tbRetorno">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Nome</th>
+                <th class="text-center">CPF</th>
+                <th class="text-center">CNPJ</th>
+              </tr>
+            </thead>
+            <tbody >
+            </tbody>
+          </table>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id ="btnNovo" class="btn btn-default">
+          <%= link_to "Novo Cliente", AppPath + "/clientes/new", :target =>"_blank" %></button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+        <button type="button" id ="btnSelect" class="btn btn-primary" onclick="setCliente('atendimento_cliente_id');"
+                data-dismiss="modal">Selecionar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--#######################################################################--->
+<!-- Modal Pesquisa Equipamentos -->
+<div class="modal fade" id="pesquisaEquipamento" tabindex="-1" role="dialog" aria-labelledby="pesquisaEquipamento"
+     aria-hidden="true">
+  <div class="modal-dialog" >
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Cancelar"><span aria-hidden="true">&times;</span></button>
+         <h4 class="modal-title" id="modalEquipamentoLabel">Pesquisa de Equipamentos</h4>
+      </div>
+      <div class="modal-body">
+        <form >
+          <div class="form-group">
+            <label for="contain">Código</label>
+            <input class="form-control" type="text" id="equipCodigo"/>
+          </div>
+          <div class="form-group">
+            <label for="contain">Descrição</label>
+            <input class="form-control" type="text" id="equipDescricao"/>
+            <label for="contain">Tipo</label>
+            <input class="form-control" type="text" id="equipTipo"/>
+          </div>
+          <button type="button" class="btn btn-default" onclick="pesquisa_equipamentos();">
+                  <span class="fa fa-search"></span></button>
+
+          <table class="table table-striped" id="tbRetornoEquip">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Código</th>
+                <th class="text-center">Descrição</th>
+                <th class="text-center">Tipo</th>
+              </tr>
+            </thead>
+            <tbody >
+            </tbody>
+          </table>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+        <button type="button" id ="btnSelect" class="btn btn-primary" onclick="setEquipamento('atendimento_equipamento_id');"
+                data-dismiss="modal">Selecionar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--#######################################################################--->
+<!-- Modal Pesquisa Resoluções -->
+<div class="modal fade" id="pesquisaResolucao" tabindex="-1" role="dialog" aria-labelledby="pesquisaResolucao"
+     aria-hidden="true">
+  <div class="modal-dialog" >
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Cancelar">
+          <span aria-hidden="true">&times;</span></button>
+         <h4 class="modal-title" id="modalResolucaoLabel">Pesquisa de Resoluções</h4>
+      </div>
+      <div class="modal-body">
+        <form >
+          <div class="form-group">
+            <label for="contain">Código</label>
+            <input class="form-control" type="text" id="resolucaoCodigo"/>
+          </div>
+          <div class="form-group">
+            <label for="contain">Descrição</label>
+            <input class="form-control" type="text" id="resolucaoDescricao"/>
+          </div>
+          <button type="button" class="btn btn-default" onclick="pesquisa_resolucao();">
+                  <span class="fa fa-search"></span></button>
+
+          <table class="table table-striped" id="tbRetornoResolucao">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Descrição</th>
+                <th>Procedimento</th>
+              </tr>
+            </thead>
+            <tbody >
+            </tbody>
+          </table>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+        <button type="button" id ="btnSelect" class="btn btn-primary" onclick="setResolucao();"
+                data-dismiss="modal">Selecionar</button>
+      </div>
+    </div>
+  </div>
+</div>

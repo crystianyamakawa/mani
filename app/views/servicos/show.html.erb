@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Descricao:</strong>
+  <%= @servico.descricao %>
+</p>
+
+<p>
+  <strong>Procedimento:</strong>
+  <%= @servico.procedimento %>
+</p>
+
+<p>
+  <strong>Prazo:</strong>
+  <%= @servico.prazo %>
+</p>
+
+<p>
+  <strong>Vl custo:</strong>
+  <%= @servico.vl_custo %>
+</p>
+
+<p>
+  <strong>Vl cobranca:</strong>
+  <%= @servico.vl_cobranca %>
+</p>
+
+<p>
+  <strong>Obs:</strong>
+  <%= @servico.obs %>
+</p>
+
+<p>
+  <strong>Created by:</strong>
+  <%= @servico.created_by %>
+</p>
+
+<p>
+  <strong>Updated by:</strong>
+  <%= @servico.updated_by %>
+</p>
+
+<%= link_to 'Edit', edit_servico_path(@servico) %> |
+<%= link_to 'Back', servicos_path %>

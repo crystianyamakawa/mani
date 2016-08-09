@@ -1,0 +1,31 @@
+
+<div class="table-responsive">
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th class="text-left">Produto</th>
+      <th class="text-center">Quantidade</th>
+      <th class="text-right">Valor Custo</th>
+      <th class="text-center" colspan="3">Ações</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @produtosKit.each do |componente| %>
+      <tr>
+        <td><%= componente.componente.descricao %></td>
+        <td class="text-center"><%= componente.quantidade %></td>
+        <td class="text-right"><%= number_to_currency(componente.vl_custo) %></td>
+        <td><%= link_to 'Mostrar', componente %></td>
+        <td><%= link_to 'Editar', edit_produto_componente_path(componente) %></td>
+        <td><%= link_to 'Eliminar', componente, method: :delete, data: { confirm: 'Confirma a Exclusão?' } %></td>
+      </tr>
+    <% end %>
+
+  </tbody>
+</table>
+</div>
+<br>
+<p style="color=blue"><%= link_to( 'Novo Componente',  {:controller =>'produto_componentes', :action => 'new' , :produto_pai => @produto}) %>
+
+</p>

@@ -1,0 +1,37 @@
+<%= form_for(@resolucao) do |f| %>
+  <% if @resolucao.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@resolucao.errors.count, "error") %> prohibited this resolucao from being saved:</h2>
+
+      <ul>
+      <% @resolucao.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :descricao %><br>
+    <%= f.text_field :descricao %>
+  </div>
+  <div class="field">
+    <%= f.label :status_final %><br>
+    <%= f.text_field :status_final %>
+  </div>
+  <div class="field">
+    <%= f.label :obs_resolucao %><br>
+    <%= f.text_area :obs_resolucao %>
+  </div>
+  <div class="field">
+    <%= f.label :created_by %><br>
+    <%= f.text_field :created_by %>
+  </div>
+  <div class="field">
+    <%= f.label :updated_by %><br>
+    <%= f.text_field :updated_by %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

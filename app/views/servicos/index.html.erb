@@ -1,0 +1,32 @@
+<h3>Ordens de Serviço</h3>
+
+<table id="tb_Servicos" class="display" cellspacing="0" width="100%">
+  <thead>
+    <tr>
+      <th>Descricao</th>
+      <th>Procedimento</th>
+      <th>Prazo</th>
+      <th>Vl custo</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @servicos.each do |servico| %>
+      <tr>
+        <td><%= servico.descricao %></td>
+        <td><%= servico.procedimento %></td>
+        <td class="text-center"><%= servico.prazo %></td>
+        <td class="text-right"><%= servico.vl_custo %></td>
+        <td><%= link_to 'Mostrar', servico %>
+            <%= link_to 'Editar', edit_servico_path(servico) %>
+            <%= link_to 'Eliminar', servico, method: :delete, data: { confirm: 'Confirma Exclusão?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Novo Serviço', new_servico_path %>

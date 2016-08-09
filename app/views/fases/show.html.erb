@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nm fase:</strong>
+  <%= @fase.nm_fase %>
+</p>
+
+<p>
+  <strong>Nr sequencia:</strong>
+  <%= @fase.nr_sequencia %>
+</p>
+
+<p>
+  <strong>Responsavel:</strong>
+  <%= @fase.responsavel_id %>
+</p>
+
+<p>
+  <strong>Pc processo:</strong>
+  <%= @fase.pc_processo %>
+</p>
+
+<p>
+  <strong>Obs:</strong>
+  <%= @fase.obs %>
+</p>
+
+<p>
+  <strong>Created by:</strong>
+  <%= @fase.created_by %>
+</p>
+
+<p>
+  <strong>Updated by:</strong>
+  <%= @fase.updated_by %>
+</p>
+
+<%= link_to 'Edit', edit_fase_path(@fase) %> |
+<%= link_to 'Back', fases_path %>

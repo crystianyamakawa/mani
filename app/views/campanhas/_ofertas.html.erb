@@ -1,0 +1,28 @@
+    <div class="list-group-item">
+        <div class="row">
+            <div class="col-xs-4"><strong>Oferta:</strong></div>
+            <div class="col-xs-2"><strong>Valor Oferta:</strong></div>
+            <div class="col-xs-2"><strong>Valor Desconto:</strong></div>
+        </div>
+        <div class="row">
+          <div class="col-xs-4"><%= f.text_field :nm_oferta %></div>
+          <div class="col-xs-2"><%= f.number_field :vl_oferta, in: 0..1000000%></div>
+          <div class="col-xs-2"><%= f.number_field :vl_desconto, in: 0..1000000%></div>
+          <div class="col-xs-2"><%= f.check_box :_destroy %> <%= f.label :_destroy, "Eliminar" %></div>
+        </div>
+      </br>
+        <div class="row">
+          <div class="col-xs-1"></div>
+          <div class="col-xs-4"><%= f.label "Produto:" %></div>
+          <div class="col-xs-2"><%= f.label "Valor Oferta:", in: 0..1000000%></div>
+        </div>
+        <%= f.fields_for :ofer_produtos do |of| %>
+            <div class="row">
+              <div class="col-xs-1"></div>
+              <div class="col-xs-4"><%= of.select :produto_id, @produtos.map{|s| [s.descricao, s.id]}, :include_blank => true %></div>
+              <div class="col-xs-2"><%= of.number_field :vl_oferta, in: 0..1000000%></div>
+              <div class="col-xs-2"><%= of.check_box :_destroy %> <%= of.label :_destroy, "Eliminar" %></div>
+            </div>
+
+        <% end %>
+    </div>

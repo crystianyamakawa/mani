@@ -1,0 +1,32 @@
+<p>
+  <strong>Nome empresa:</strong>
+  <%= @sistema_parametro.nome_empresa %>
+</p>
+
+<p>
+  <strong>App Locação:</strong>
+  <%= @sistema_parametro.fg_app_locacao %>
+</p>
+
+<p>
+  <strong>App Comercial:</strong>
+  <%= @sistema_parametro.fg_app_comercial %>
+</p>
+
+<p>
+  <strong>App CRM:</strong>
+  <%= @sistema_parametro.fg_app_crm %>
+</p>
+
+<p>
+  <strong>Criado por:</strong>
+  <%= @sistema_parametro.created_by %>
+</p>
+
+<p>
+  <strong>Atualizado por:</strong>
+  <%= @sistema_parametro.updated_by %>
+</p>
+
+<%= link_to 'Editar', edit_sistema_parametro_path(@sistema_parametro) %> |
+<%= link_to 'Voltar', sistema_parametros_path %>

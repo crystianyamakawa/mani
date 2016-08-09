@@ -1,0 +1,28 @@
+
+<div class="table-responsive">
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th class="text-left">Caracteristica</th>
+      <th class="text-center">Valor</th>
+      <th class="text-right">Unidade</th>
+      <th class="text-center" colspan="3">Ações</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @componente_caracteristicas.each do |componente_caracteristica| %>
+      <tr>
+        <td><%= componente_caracteristica.caracteristica.descricao %></td>
+        <td class="text-center"><%= componente_caracteristica.valor %></td>
+        <td class="text-right"><%=  componente_caracteristica.unidade %></td>
+        <td><%= link_to 'Mostrar', componente_caracteristica %></td>
+        <td><%= link_to 'Editar', edit_componente_caracteristica_path(componente_caracteristica) %></td>
+        <td><%= link_to 'Eliminar', componente_caracteristica, method: :delete, data: { confirm: 'Confirma a Exclusão?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<br>
+<p style="color=blue"><%= link_to( 'Nova Caracteristica',  {:controller =>'componente_caracteristicas', :action => 'new' , :componente_id => @componente}) %>

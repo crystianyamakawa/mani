@@ -1,0 +1,89 @@
+<%= form_for(@campanha) do |f| %>
+  <% if @campanha.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@campanha.errors.count, "error") %> prohibited this campanha from being saved:</h2>
+
+      <ul>
+      <% @campanha.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+  <div class="panel panel-default">
+    <div class="panel-heading">Detalhes da Campanha
+      <span class="fa arrow" data-toggle="collapse" data-target="#panelDados" aria-expanded="true" aria-controls="panelDados"></span>
+      <!--button class="btn btn-default" type="button" -->
+    </div>
+    <div class="panel-body" id="panelDados">
+      <div class="row">
+            <div class="col-xs-6"><strong>Nome Campanha:</strong></div>
+            <div class="col-xs-6"><strong>Responsável:</strong></div>
+      </div>
+      <div class="row">
+           <div class="col-xs-6"><%= f.text_field :nm_campanha, size: 50 %></div>
+            <div class="col-xs-6"><%= f.select(:responsavel_id, @responsavel.map {|s| [s.first_name.to_s + " " + s.last_name.to_s , s.id]},:include_blank => true, size: 60 ) %></div>
+     </div>
+
+      <div class="row">
+        </br>
+          <div class="col-xs-6"><strong>Inicio:</strong></div>
+          <div class="col-xs-6"><strong>Termino:</strong></div>
+      </div>
+      <div class="row">
+          <div class="col-xs-6"><%= f.datetime_select :dt_inicio %></div>
+          <div class="col-xs-6"><%= f.datetime_select :dt_termino %></div>
+      </div>
+
+      <div class="row">
+        </br>
+          <div class="col-xs-6"><strong>Meta:</strong></div>
+          <div class="col-xs-6"><strong>Atingido:</strong></div>
+      </div>
+      <div class="row">
+          <div class="col-xs-6"><%= f.text_field_tag "vl_meta_cur", number_to_currency(@campanha.vl_meta),
+                                  {:onchange => "currency_to_number(vl_meta_cur, campanha_vl_meta)"} %>
+              <%=  f.hidden_field :vl_meta%>
+          </div>
+          <div class="col-xs-6"><%= f.text_field_tag "vl_atingido_cur", number_to_currency(@campanha.vl_atingido),
+                                {:onchange => "currency_to_number(vl_atingido_cur, campanha_vl_atingido)"} %>
+                                <%= f.hidden_field :vl_atingido%>
+         </div>
+      </div>
+      <div class="row">
+        </br>
+          <div class="col-xs-12"><strong>Obs:</strong></div>
+      </div>
+      <div class="row">
+          <div class="col-xs-12"><%= f.text_area :obs , :size =>"50X5" %> </div>
+
+      </div>
+
+      <div class="row">
+        </br>
+          <div class="col-xs-6"><strong>Criado por:</strong> <%= @campanha.created_by %></div>
+          <div class="col-xs-6"><strong>Alterado por:</strong> <%= @campanha.updated_by%></div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">Ofertas
+      <span class="fa arrow" data-toggle="collapse" data-target="#panelOferta" aria-expanded="true" aria-controls="panelOferta"></span>
+      <!--button class="btn btn-default" type="button" -->
+    </div>
+    <div class="panel-body" id="panelOferta">
+      <%= f.fields_for :ofertas do |builder| %>
+        <%= render "ofertas", :f => builder %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

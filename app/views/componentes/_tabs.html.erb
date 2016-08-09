@@ -1,0 +1,16 @@
+<!-- Nav tabs -->
+<ul class="nav nav-tabs" role="tablist">
+  <li class="active"><a href="#caract" role="tab" data-toggle="tab">Caracteristicas</a></li>
+  <!--li><a href="#kit" role="tab" data-toggle="tab">Componentes</a></li-->
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+  <!--div class="tab-pane active" id="produto">
+      < render(:partial => "produto", :locals => {:produto => @produto}) >
+
+  </div-->
+  <div class="tab-pane active" id="caract">
+      <%= render(:partial => "caract", :locals => {:componente => @componente}) %>
+  </div>
+</div>

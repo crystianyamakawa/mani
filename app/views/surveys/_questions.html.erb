@@ -1,0 +1,10 @@
+<p>
+  <%= f.label :content, "Pergunta" %><br/>
+  <%= f.text_area :content, :rows =>3 %>
+  <%= link_to_remove_fields("Remover Pergunta",f)%><br/>
+
+  <%= f.fields_for :answers do |builder| %>
+        <%= render "answers", :b => builder %>
+  <% end %>
+  <p><!--= link_to_add_fields("Add Resposta", f, "answers") %--></p>
+</p>

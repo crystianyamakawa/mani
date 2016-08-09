@@ -1,0 +1,41 @@
+<%= form_for(@sistema_parametro) do |f| %>
+  <% if @sistema_parametro.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@sistema_parametro.errors.count, "error") %> prohibited this sistema_parametro from being saved:</h2>
+
+      <ul>
+      <% @sistema_parametro.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nome_empresa %><br>
+    <%= f.text_field :nome_empresa %>
+  </div>
+  <div class="field">
+    <%= f.label :fg_app_locacao %><br>
+    <%= f.check_box :fg_app_locacao %>
+  </div>
+  <div class="field">
+    <%= f.label :fg_app_comercial %><br>
+    <%= f.check_box :fg_app_comercial %>
+  </div>
+  <div class="field">
+    <%= f.label :fg_app_crm %><br>
+    <%= f.check_box :fg_app_crm %>
+  </div>
+  <div class="field">
+    <%= f.label :created_by %><br>
+    <%= f.text_field :created_by %>
+  </div>
+  <div class="field">
+    <%= f.label :updated_by %><br>
+    <%= f.text_field :updated_by %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Componente_caracteristicas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Componente</th>
+      <th>Caracteristica</th>
+      <th>Valor</th>
+      <th>Unidade</th>
+      <th>Created by</th>
+      <th>Updated by</th>
+      <th class="text-center" colspan="3">Ações</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @componente_caracteristicas.each do |componente_caracteristica| %>
+      <tr>
+        <td><%= componente_caracteristica.componente_id %></td>
+        <td><%= componente_caracteristica.caracteristica_id %></td>
+        <td><%= componente_caracteristica.valor %></td>
+        <td><%= componente_caracteristica.unidade %></td>
+        <td><%= componente_caracteristica.created_by %></td>
+        <td><%= componente_caracteristica.updated_by %></td>
+        <td><%= link_to 'Show', componente_caracteristica %></td>
+        <td><%= link_to 'Edit', edit_componente_caracteristica_path(componente_caracteristica) %></td>
+        <td><%= link_to 'Destroy', componente_caracteristica, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Componente caracteristica', new_componente_caracteristica_path %>

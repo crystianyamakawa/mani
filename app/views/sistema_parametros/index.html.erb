@@ -1,0 +1,32 @@
+
+<h1>Lista de Parametros do Sistema</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nome empresa</th>
+      <th>App Locação</th>
+      <th>App Comercial</th>
+      <th>App CRM</th>
+      <th colspan="2">Ações</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sistema_parametros.each do |sistema_parametro| %>
+      <tr>
+        <td><%= sistema_parametro.nome_empresa %></td>
+        <td><%= sistema_parametro.fg_app_locacao %></td>
+        <td><%= sistema_parametro.fg_app_comercial %></td>
+        <td><%= sistema_parametro.fg_app_crm %></td>
+        <td><%= link_to 'Mostrar', sistema_parametro %></td>
+        <td><%= link_to 'Editar', edit_sistema_parametro_path(sistema_parametro) %></td>
+        <!--td><%= link_to 'Eliminar', sistema_parametro, method: :delete, data: { confirm: 'Confirma Exclusão?' } %></td-->
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<!--%= link_to 'New Sistema parametro', new_sistema_parametro_path %--->

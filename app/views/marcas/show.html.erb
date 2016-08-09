@@ -1,0 +1,19 @@
+<h2>Marcas</h2>
+</br>
+<p>
+  <strong>Nome:</strong>
+  <%= @marca.nome %>
+</p>
+
+<p>
+  <strong>Criado por:</strong>
+  <%= @marca.created_by %>
+</p>
+
+<p>
+  <strong>Atualizado por:</strong>
+  <%= @marca.updated_by %>
+</p>
+
+<%= link_to 'Editar', edit_marca_path(@marca) %> |
+<%= link_to 'Voltar', marcas_path %>

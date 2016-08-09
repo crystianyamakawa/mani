@@ -1,0 +1,45 @@
+<%= form_for(@ordem_servico_iten) do |f| %>
+  <% if @ordem_servico_iten.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ordem_servico_iten.errors.count, "error") %> prohibited this ordem_servico_iten from being saved:</h2>
+
+      <ul>
+      <% @ordem_servico_iten.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= "Ordem Serviço:" %><br>
+    <%= f.number_field :ordem_servico_id %>
+  </div>
+  <div class="field">
+    <%= "Serviço:" %><br>
+    <%= f.select(:servico_id, @servicos.map {|s| [s.descricao,s.id]},:include_blank => true, size: 60 ) %>
+  </div>
+  <div class="field">
+    <%= "Fornecedor:" %><br>
+    <%= f.select(:fornecedor_id, @fornecedores.map {|s| [s.nome, s.id]},:include_blank => true, size: 60 )%>
+  </div>
+  <div class="field">
+    <%= "Status:" %><br>
+    <%= f.select(:status, @status,:include_blank => true, size: 60 ) %>
+  </div>
+  <div class="field">
+    <%= "Obs:" %><br>
+    <%= f.text_area :obs %>
+  </div>
+  <div class="field">
+    <%= "Criado Por:" %><br>
+    <%= f.text_field :created_by %>
+  </div>
+  <div class="field">
+    <%= "Alterado Por:" %><br>
+    <%= f.text_field :updated_by %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,58 @@
+
+
+rails generate scaffold Agenda nome:string created_by:string updated_by:string
+
+Cadastros
+  -rails generate scaffold Cliente nome:string nr_telefone:string nr_telefone2:string contato:string fg_cliente:boolean fg_fornecedor:boolean tp_pessoa:string nr_cnpj_cpf:string nr_insc_estadual:string  rua:string nr_endereco:string bairro:string cidade:string cep:string uf:string created_by:string updated_by:string
+  -rails generate scaffold Sistema_Parametro nome_empresa:string fg_app_locacao:boolean fg_app_comercial:boolean fg_app_crm:boolean created_by:string updated_by:string
+  -rails generate scaffold Lista_Valor nm_lista:string valor:string created_by:string updated_by:string
+
+  -rails generate scaffold Marca nome:string created_by:string updated_by:string
+  -rails generate scaffold Categoria_Produto nome:string categoria_pai_id:integer created_by:string updated_by:string
+  -rails generate scaffold Estoque nome:string tipo:string created_by:string updated_by:string
+  -rails generate scaffold Produto tipo:string codigo:string descricao:string marca_id:integer modelo:string vl_custo:float vl_venda:float unidade:string categoria_pai_id:integer categoria_id:integer estoque_id:integer ean:string ncm:string created_by:string updated_by:string
+  -rails generate scaffold Produto_Componente produto_pai_id:string produto_id:integer quantidade:float vl_custo:float created_by:string updated_by:string
+  -rails generate scaffold Caracteristica codigo:string descricao:string unidade:string created_by:string updated_by:string
+  -rails generate scaffold Equipamento codigo:string descricao:string tipo:string marca_id:integer ds_modelo:string vl_aquisicao:float vl_venda:float vl_locacao:float unidade:string categoria_pai_id:integer categoria_id:integer estoque_id:integer nr_patrimonio:string status:string obs:text created_by:string updated_by:string
+  -rails generate scaffold Componente codigo:string descricao:string tipo:string marca_id:integer ds_modelo:string vl_aquisicao:float vl_venda:float vl_locacao:float unidade:string categoria_pai_id:integer categoria_id:integer estoque_id:integer nr_patrimonio:string status:string created_by:string updated_by:string
+
+  -rails generate scaffold Equipamento_Componente equipamento_id:integer componente_id:integer quantidade:float created_by:string updated_by:string
+  -rails generate scaffold Componente_Caracteristica equipamento_id:integer caracteristica_id:integer valor:string unidade:string created_by:string updated_by:string
+
+
+Financeiro
+  -rails generate scaffold Fechamento_Caixa periodo:date fin_conta_id:integer vl_saldo:float created_by:string updated_by:string
+  -rails generate scaffold Despesa nome:string fornecedor_id:integer vl_despesa:float status:string obs:text  created_by:string updated_by:string
+  -rails generate scaffold FinMovimento tp_movimento:string descricao:string valor:float status:string motivo_status:string dt_previsto:date dt_executado:date contrato_id:integer fin_conta_id:integer despesa_id:integer obs:text created_by:string updated_by:string
+  -rails generate scaffold FinConta banco:string nm_banco:string agencia:string nm_agencia:string conta:string nm_titular:string nr_documento_titular:string saldo:float status:string obs:text created_by:string updated_by:string
+Contratos
+  -rails generate scaffold Contrato descricao:string cliente_id:integer tp_evento:string dt_evento:date dt_inicio:datetime dt_termino:datetime status:string vl_negociado:float obs:text created_by:string updated_by:string
+  -rails generate scaffold ContratoEquipamento contrato_id:integer equipamento_id:integer quantidade:integer vl_tabela:float vl_negociado:float vl_locacao:float dt_inicio:datetime dt_termino:datetime created_by:string updated_by:string
+
+  -rails generate scaffold ContratoProduto contrato_id:integer produto_id:integer quantidade:integer vl_tabela:float vl_negociado:float dt_inicio:datetime dt_termino:datetime created_by:string updated_by:string
+
+CRM
+  rails generate scaffold Atendimento nr_protocolo:string nm_contato:string tp_retorno:string ds_retorno:string cliente_id:integer atendimento_id:integer motivo_id:integer submotivo_id:integer status:string equipamento_id:integer rua:string nr_endereco:string bairro:string cidade:string cep:string uf:string lat:string long:string resolucao_id:integer dt_fechamento:date obs:text created_by:string updated_by:string
+  rails generate scaffold Motivo descricao:string motivo_id:integer setor_1:string prazo_1:integer setor_2:string prazo_2:integer setor_3:string prazo_3:integer obs:text created_by:string updated_by:string
+  rails generate scaffold Resolucao descricao:string status_final:string obs_resolucao:text created_by:string updated_by:string
+  rails generate scaffold Inbox inbox:string objeto_descricao:string objeto_tipo:string objeto_id:integer fg_visivel:boolean obs:text created_by:string updated_by:string
+
+  rails generate scaffold OrdemServico nr_protocolo:string nm_contato:string tp_retorno:string ds_retorno:string cliente_id:integer atendimento_id:integer status:string responsavel:string equipamento_id:integer rua:string nr_endereco:string bairro:string cidade:string cep:string uf:string lat:string long:string dt_fechamento:date obs:text created_by:string updated_by:string
+  rails generate scaffold OrdemServicoItens ordemservico_id:integer servico_id:integer fornecedor_id:integer status:string obs:text created_by:string updated_by:string
+  rails generate scaffold Servico descricao:string procedimento:text prazo:integer vl_custo:float vl_cobranca:float obs:text created_by:string updated_by:string
+
+  rails generate scaffold Oportunidade nm_contato:string tp_retorno:string ds_retorno:string cliente_id:integer processo_venda_id:integer campanha_id:integer oferta_id:integer fase_id:integer etapa_id:integer situacao_etapa:integer status:string resultado:string motivo_resultado_id:integer pc_evolucao:float pc_sucesso:float responsavel_id:integer obs:text created_by:string updated_by:string
+  rails generate scaffold OppProdutos oportunidade_id:integer produto_id:integer vl_negociado:float prazo_entrega:integer dt_entrega:datetime obs:text created_by:string updated_by:string
+  rails generate scaffold Interessado objeto_id:integer objeto_type:string nm_contato:string tp_retorno:string ds_retorno:string interessado_id:integer papel:string obs:text created_by:string updated_by:string
+  rails generate scaffold ProcessoVenda nm_processo:string responsavel_id:integer obs:text created_by:string updated_by:string
+  rails generate scaffold Fase nm_fase:string processo_venda_id:integer nr_sequencia:integer responsavel_id:integer pc_processo:float obs:text created_by:string updated_by:string
+  rails generate scaffold Etapa fase_id:integer nm_etapa:string nr_sequencia:integer responsavel_id:integer obs:text created_by:string updated_by:string
+  rails generate scaffold EtapaSituacao etapa_id:integer nm_situacao:string created_by:string updated_by:string
+
+  rails generate scaffold Campanha nm_campanha:string dt_inicio:datetime dt_termino:datetime vl_meta:float vl_atingido:float responsavel_id:integer obs:text created_by:string updated_by:string
+  rails generate scaffold Ofertas  nm_oferta:string  campanha_id:integer dt_inicio:datetime dt_termino:datetime vl_oferta:float vl_desconto:float pc_desconto:float obs:text created_by:string updated_by:string
+  rails generate scaffold OferProdutos oferta_id:integer produto_id:integer vl_oferta:float obs:text created_by:string updated_by:string
+
+  rails generate scaffold Survey name:string
+  rails generate scaffold Question survey_id:integer content:text
+  rails generate scaffold Answer question_id:integer content:string

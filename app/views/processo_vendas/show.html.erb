@@ -1,0 +1,60 @@
+<h3>Processo de Venda</h3>
+<div class="panel panel-default">
+  <div class="panel-heading">Detalhes Processo de Venda
+    <span class="fa arrow" data-toggle="collapse" data-target="#panelDados" aria-expanded="true" aria-controls="panelDados"></span>
+    <!--button class="btn btn-default" type="button" -->
+  </div>
+  <div class="panel-body" id="panelDados">
+    <div class="row">
+          <div class="col-xs-6"><strong>Nome Processo de Venda:</strong> <%= @processo_venda.nm_processo %></div>
+          <div class="col-xs-6"><strong>Responsavel:</strong> <%= @processo_venda.responsavel.first_name + " " + @processo_venda.responsavel.last_name %></div>
+    </div>
+
+    <div class="row">
+      </br>
+        <div class="col-xs-12"><strong>Obs:</strong> <%= @processo_venda.obs %></div>
+    </div>
+
+    <div class="row">
+      </br>
+        <div class="col-xs-6"><strong>Criado por:</strong> <%= @processo_venda.created_by %></div>
+        <div class="col-xs-6"><strong>Alterado por:</strong> <%= @processo_venda.updated_by%></div>
+    </div>
+
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">Fases
+    <span class="fa arrow" data-toggle="collapse" data-target="#panelFase" aria-expanded="true" aria-controls="panelFase"></span>
+    <!--button class="btn btn-default" type="button" -->
+  </div>
+  <div class="panel-body" id="panelFase">
+    <ol>
+      <% for fase in @processo_venda.fases %>
+          <div class="list-group-item">
+              <div class="row">
+                  <div class="col-xs-4"><strong>Fase:</strong> <%= fase.nm_fase %></div>
+                  <div class="col-xs-2"><strong>% Processo:</strong> <%= fase.pc_processo %></div>
+                  <div class="col-xs-4"><strong>Obs:</strong> <%= fase.obs %></div>
+              </div>
+              
+              <% for etapa in fase.etapas %>
+                  <div class="row">
+                    <div class="col-xs-1"></div>
+                    <div class="col-xs-4"><strong><%= "Etapa:" %></strong> <%= etapa.nm_etapa%></div>
+                    <div class="col-xs-7"><strong><%= "Situações:" %></strong>
+                      <% for situacao in etapa.etapa_situacaos %>
+                        <%= situacao.nm_situacao + "| "%>
+                      <% end %>
+                   </div>
+                  </div>
+              <% end %>
+          </div>
+    <% end %>
+  </ol>
+  </div>
+</div>
+
+<%= link_to 'Editar', edit_processo_venda_path(@processo_venda) %> |
+<%= link_to 'Voltar', processo_vendas_path %>

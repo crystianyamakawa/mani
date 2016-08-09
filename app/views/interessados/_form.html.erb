@@ -1,0 +1,57 @@
+<%= form_for(@interessado) do |f| %>
+  <% if @interessado.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@interessado.errors.count, "error") %> prohibited this interessado from being saved:</h2>
+
+      <ul>
+      <% @interessado.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :objeto_id %><br>
+    <%= f.number_field :objeto_id %>
+  </div>
+  <div class="field">
+    <%= f.label :objeto_type %><br>
+    <%= f.text_field :objeto_type %>
+  </div>
+  <div class="field">
+    <%= f.label :nm_contato %><br>
+    <%= f.text_field :nm_contato %>
+  </div>
+  <div class="field">
+    <%= f.label :tp_retorno %><br>
+    <%= f.text_field :tp_retorno %>
+  </div>
+  <div class="field">
+    <%= f.label :ds_retorno %><br>
+    <%= f.text_field :ds_retorno %>
+  </div>
+  <div class="field">
+    <%= f.label :interessado_id %><br>
+    <%= f.number_field :interessado_id %>
+  </div>
+  <div class="field">
+    <%= f.label :papel %><br>
+    <%= f.text_field :papel %>
+  </div>
+  <div class="field">
+    <%= f.label :obs %><br>
+    <%= f.text_area :obs %>
+  </div>
+  <div class="field">
+    <%= f.label :created_by %><br>
+    <%= f.text_field :created_by %>
+  </div>
+  <div class="field">
+    <%= f.label :updated_by %><br>
+    <%= f.text_field :updated_by %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

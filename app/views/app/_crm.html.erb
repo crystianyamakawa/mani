@@ -1,0 +1,124 @@
+<!-- /.row -->
+<br>
+    <div class="panel panel-default" >
+        <div class="panel-heading">
+            <i class="fa fa-bar-chart-o fa-fw"></i> Atendimentos:
+            <div class="pull-right">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                        Ações
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu pull-right" role="menu">
+                        <li><a href="#">Atualizar</a>
+                        </li>
+                        <li><a href="#">Visualizar Atendimentos</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="#">Imprimir</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+            <strong>Analise de Atendimentos:</strong>
+            <br>
+              <div class="col-lg-6 ">
+                      <%= pie_chart Atendimento.group(:status).count, xtitle: "Chamados por Status" %>
+              </div>
+              <div class="col-lg-6 ">
+                      <%= line_chart Atendimento.group(:status).count, xtitle: "Status",ytitle: " Qtd. Chamados"  %>
+              </div>
+        </div>
+
+        <!-- /.panel-body -->
+    </div>
+  </div>
+<!-- ORDEM SERVICO-->
+<div class="panel panel-default" >
+    <div class="panel-heading">
+        <i class="fa fa-bar-chart-o fa-fw"></i> Ordens de Serviço:
+        <div class="pull-right">
+            <div class="btn-group">
+              <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                  Ações
+                  <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu pull-right" role="menu">
+                  <li><a href="#">Atualizar</a>
+                  </li>
+                  <li><a href="#">Visualizar Ordem Serviço</a>
+                  </li>
+                  <li class="divider"></li>
+                  <li><a href="#">Imprimir</a>
+                  </li>
+              </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.panel-heading -->
+    <div class="panel-body">
+        <strong>Status das Ordens de Serviço:</strong>
+        <br>
+        <div class="col-lg-6 ">
+                  <%= area_chart OrdemServico.group("date(convert_tz(created_at,'UTC','[Brasilia]'))").group(:status).count, xtitle: "Status", ytitle: "Qtd. Ordens" %>
+          </div>
+          <div class="col-lg-6 ">
+                  <%= bar_chart(OrdemServico.group(:status).count) %>
+          </div>
+    </div>
+
+    <!-- /.panel-body -->
+</div>
+<!-- Vendas-->
+<div class="panel panel-default" >
+    <div class="panel-heading">
+        <i class="fa fa-bar-chart-o fa-fw"></i> Vendas:
+        <div class="pull-right">
+            <div class="btn-group">
+              <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                  Ações
+                  <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu pull-right" role="menu">
+                  <li><a href="#">Atualizar</a>
+                  </li>
+                  <li><a href="#">Visualizar Vendas</a>
+                  </li>
+                  <li class="divider"></li>
+                  <li><a href="#">Imprimir</a>
+                  </li>
+              </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.panel-heading -->
+    <div class="panel-body">
+        <row>
+          <strong>Planejamento Campanha:</strong>
+          <br>
+          <div class="col-lg-12 ">
+                  <%= timeline [["Leads", "2016-01-01", "2016-06-30"],
+                                ["Prospects", "2016-04-01", "2016-08-30"],
+                                ["Oportunidades", "2016-05-01", "2016-12-30"]] %>
+          </div>
+        </row>
+        <row>
+          <div class="col-lg-12 ">
+            <strong>Area Atuação</strong>
+                  <%= geo_chart [["Germany", 500],
+                                 ["Argentina", 500],
+                                 ["Canada", 500],
+                                 ["Brazil", 1000],
+                                 ["Uruguay", 50],
+                                 ["Chile", 1],
+                                 ["Paraguay", 2]] %>
+          </div>
+        </row>
+    </div>
+
+    <!-- /.panel-body -->
+</div>
+</div>

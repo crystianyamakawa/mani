@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Etapa:</strong>
+  <%= @etapa_situacao.etapa_id %>
+</p>
+
+<p>
+  <strong>Nm situacao:</strong>
+  <%= @etapa_situacao.nm_situacao %>
+</p>
+
+<p>
+  <strong>Created by:</strong>
+  <%= @etapa_situacao.created_by %>
+</p>
+
+<p>
+  <strong>Updated by:</strong>
+  <%= @etapa_situacao.updated_by %>
+</p>
+
+<%= link_to 'Edit', edit_etapa_situacao_path(@etapa_situacao) %> |
+<%= link_to 'Back', etapa_situacaos_path %>

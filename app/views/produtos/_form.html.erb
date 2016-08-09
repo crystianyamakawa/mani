@@ -1,0 +1,88 @@
+<%= form_for(@produto) do |f| %>
+  <% if @produto.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@produto.errors.count, "error") %> prohibited this produto from being saved:</h2>
+
+      <ul>
+      <% @produto.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="table-responsive">
+  <table class="table table-striped">
+    <tr>
+      <td colspan="3"><strong>Tipo Produto:</strong></td>
+      <td colspan="10" class="text-left"><%= f.select(:tipo, @tp_produto.map {|s| [s.valor]},:include_blank => true, size: 60 )%></td>
+      <td ><strong>Codigo:</strong></td>
+      <td colspan="15"><%= f.text_field :codigo %></td>
+    </tr>
+
+    <tr>
+        <td colspan="3"><strong>Marca:</strong></td>
+        <td colspan="10" class="text-left"><%= f.select(:marca_id, @marcas.map {|s| [s.nome, s.id]},:include_blank => true, size: 60 )%></td>
+        <td ><strong>Modelo:</strong></td>
+        <td colspan="15"><%= f.text_field :modelo %></td>
+    </tr>
+    <tr>
+      <td colspan="3"><strong>Descricao:</strong></td>
+      <td colspan="10" class="text-left"><%= f.text_field :descricao %></td>
+      <td ><strong>Unidade:</strong></td>
+      <td colspan="15"><%= f.select(:unidade, @unidades.map {|s| [s.valor]},:include_blank => true, size: 60 ) %></td>
+    </tr>
+    <tr>
+        <td colspan="3"><strong>Valor Custo:</strong></td>
+        <td colspan="10" class="text-left"><%= f.text_field_tag "vl_custo_cur", number_to_currency(@produto.vl_custo),
+                                               {:onchange => "currency_to_number(vl_custo_cur, produto_vl_custo)"} %>
+                                           <%=  f.hidden_field :vl_custo%>
+        </td>
+        <td ><strong>Valor Venda:</strong></td>
+        <td colspan="15"><%= f.text_field_tag "vl_venda_cur", number_to_currency(@produto.vl_venda),
+                                               {:onchange => "currency_to_number(vl_venda_cur, produto_vl_venda)"} %>
+                                           <%= f.hidden_field :vl_venda%>
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="3"><strong>Categoria:</strong></td>
+        <td colspan="10" class="text-left" />
+        <%= f.select(:categoria_id, @subcategorias.map {|s| [s.nome, s.id]},:include_blank => true, size: 60 ) %></td>
+        <td ><strong>Estoque:</strong></td>
+        <td colspan="25" class="text-left">
+        <%= f.select(:estoque_id, @estoques.map {|s| [s.nome, s.id]},:include_blank => true, size: 60 ) %>
+      </td>
+
+    </tr>
+    <tr>
+        <td colspan="3"><strong>EAN:</strong></td>
+        <td colspan="10"><%= f.text_field :ean %></td>
+        <td ><strong>NCM:</strong></td>
+        <td colspan="15"><%= f.text_field :ncm %></td>
+
+    </tr>
+
+      <tr>
+            <td colspan="3"><strong>Criado Por:</strong></td>
+            <td colspan="10" class="text-left"><%= @produto.created_by %></td>
+            <td >  <strong>Atualizado Por:</strong></td>
+            <td colspan="15"><%= @produto.updated_by %></td>
+      <tr>
+      <tr>
+            <td colspan="3"><strong>Criado Em:</strong></td>
+            <td colspan="10" class="text-left"><%= @produto.created_at.try(:strftime, "%d/%m/%Y %H:%M:%S") %></td>
+            <td >  <strong>Atualizado Em:</strong></td>
+            <td colspan="15"><%= @produto.updated_at.try(:strftime, "%d/%m/%Y %H:%M:%S") %></td>
+      <tr>
+
+
+
+  </table>
+  </div>
+  <hr>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+  <% end %>

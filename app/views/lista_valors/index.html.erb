@@ -1,0 +1,38 @@
+<h2>Lista de Valores</h2>
+
+<div align="left">
+    <%= form_tag '', :method => :get do %>
+      <%= select_tag :lista_valor, options_for_select(@lista_valores),:prompt =>'Informe Lista Valor...'  %>
+      <%= text_field_tag :valor, nil, :placeholder =>'Informe Valor...'  %>
+      <%= submit_tag 'Filtar Registros' %>
+    <% end %>
+   <hr>
+</div>
+
+<div class="table-responsive">
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Lista Valor</th>
+      <th>Valores</th>
+      <th colspan="3">Ações</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @lista_valors.each do |lista_valor| %>
+      <tr>
+        <td><%= lista_valor.nm_lista %></td>
+        <td><%= lista_valor.valor %></td>
+        <td><%= link_to 'Mostrar', lista_valor %></td>
+        <td><%= link_to 'Editar', edit_lista_valor_path(lista_valor) %></td>
+        <td><%= link_to 'Eliminar', lista_valor, method: :delete, data: { confirm: 'Confirma a Exclusão?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<div class="text-center">
+    <%= will_paginate @lista_valors %>
+</div>
+<%= link_to 'Novo Valor', new_lista_valor_path %>

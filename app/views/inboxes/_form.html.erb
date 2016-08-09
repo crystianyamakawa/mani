@@ -1,0 +1,49 @@
+<%= form_for(@inbox) do |f| %>
+  <% if @inbox.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@inbox.errors.count, "error") %> prohibited this inbox from being saved:</h2>
+
+      <ul>
+      <% @inbox.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :inbox %><br>
+    <%= f.text_field :inbox %>
+  </div>
+  <div class="field">
+    <%= f.label :objeto_descricao %><br>
+    <%= f.text_field :objeto_descricao %>
+  </div>
+  <div class="field">
+    <%= f.label :objeto_tipo %><br>
+    <%= f.text_field :objeto_tipo %>
+  </div>
+  <div class="field">
+    <%= f.label :objeto_id %><br>
+    <%= f.number_field :objeto_id %>
+  </div>
+  <div class="field">
+    <%= f.label :fg_visivel %><br>
+    <%= f.check_box :fg_visivel %>
+  </div>
+  <div class="field">
+    <%= f.label :obs %><br>
+    <%= f.text_area :obs %>
+  </div>
+  <div class="field">
+    <%= f.label :created_by %><br>
+    <%= f.text_field :created_by %>
+  </div>
+  <div class="field">
+    <%= f.label :updated_by %><br>
+    <%= f.text_field :updated_by %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

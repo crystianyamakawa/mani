@@ -1,0 +1,24 @@
+<h2>Estoques</h2>
+<br>
+<p>
+  <strong>Nome:</strong>
+  <%= @estoque.nome %>
+</p>
+
+<p>
+  <strong>Tipo:</strong>
+  <%= @estoque.tipo %>
+</p>
+
+<p>
+  <strong>Created by:</strong>
+  <%= @estoque.created_by %>
+</p>
+
+<p>
+  <strong>Updated by:</strong>
+  <%= @estoque.updated_by %>
+</p>
+
+<%= link_to 'Editar', edit_estoque_path(@estoque) %> |
+<%= link_to 'Voltar', estoques_path %>

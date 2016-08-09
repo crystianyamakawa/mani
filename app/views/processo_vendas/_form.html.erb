@@ -1,0 +1,63 @@
+<%= form_for(@processo_venda) do |f| %>
+  <% if @processo_venda.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@processo_venda.errors.count, "error") %> prohibited this processo_venda from being saved:</h2>
+
+      <ul>
+      <% @processo_venda.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="panel panel-default">
+    <div class="panel-heading">Detalhes Processo de Venda
+      <span class="fa arrow" data-toggle="collapse" data-target="#panelDados" aria-expanded="true" aria-controls="panelDados"></span>
+      <!--button class="btn btn-default" type="button" -->
+    </div>
+    <div class="panel-body" id="panelDados">
+      <div class="row">
+            <div class="col-xs-6"><strong>Nome Processo de Venda:</strong></div>
+            <div class="col-xs-6"><strong>Responsável:</strong></div>
+      </div>
+      <div class="row">
+           <div class="col-xs-6"><%= f.text_field :nm_processo, size: 50 %></div>
+            <div class="col-xs-6"><%= f.select(:responsavel_id, @responsavel.map {|s| [s.first_name.to_s + " " + s.last_name.to_s , s.id]},:include_blank => true, size: 60 ) %></div>
+     </div>
+
+      <div class="row">
+        </br>
+          <div class="col-xs-12"><strong>Obs:</strong></div>
+      </div>
+      <div class="row">
+          <div class="col-xs-12"><%= f.text_area :obs , :size =>"50X5" %> </div>
+
+      </div>
+
+      <div class="row">
+        </br>
+          <div class="col-xs-6"><strong>Criado por:</strong> <%= @processo_venda.created_by %></div>
+          <div class="col-xs-6"><strong>Alterado por:</strong> <%= @processo_venda.updated_by%></div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">Fases
+      <span class="fa arrow" data-toggle="collapse" data-target="#panelFase" aria-expanded="true" aria-controls="panelFase"></span>
+      <!--button class="btn btn-default" type="button" -->
+    </div>
+    <div class="panel-body" id="panelFase">
+      <%= f.fields_for :fases do |builder| %>
+        <%= render "fases", :f => builder %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

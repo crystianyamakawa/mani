@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Inbox:</strong>
+  <%= @inbox.inbox %>
+</p>
+
+<p>
+  <strong>Objeto descricao:</strong>
+  <%= @inbox.objeto_descricao %>
+</p>
+
+<p>
+  <strong>Objeto tipo:</strong>
+  <%= @inbox.objeto_tipo %>
+</p>
+
+<p>
+  <strong>Objeto:</strong>
+  <%= @inbox.objeto_id %>
+</p>
+
+<p>
+  <strong>Fg visivel:</strong>
+  <%= @inbox.fg_visivel %>
+</p>
+
+<p>
+  <strong>Obs:</strong>
+  <%= @inbox.obs %>
+</p>
+
+<p>
+  <strong>Created by:</strong>
+  <%= @inbox.created_by %>
+</p>
+
+<p>
+  <strong>Updated by:</strong>
+  <%= @inbox.updated_by %>
+</p>
+
+<%= link_to 'Edit', edit_inbox_path(@inbox) %> |
+<%= link_to 'Back', inboxes_path %>

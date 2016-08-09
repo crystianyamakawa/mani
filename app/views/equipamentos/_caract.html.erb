@@ -1,0 +1,25 @@
+
+<div class="table-responsive">
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th class="text-left">Componente</th>
+      <th class="text-left">Caracteristica</th>
+      <th class="text-right">Valor</th>
+      <th class="text-center">Unidade</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @caracteristicas.each do |caracteristica| %>
+      <tr>
+        <td class="text-left"><%= caracteristica.componente.descricao %></td>
+        <td class="text-left"><%= caracteristica.caracteristica %></td>
+        <td class="text-right"><%= caracteristica.valor %></td>
+        <td class="text-center"><%= caracteristica.unidade %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<br>

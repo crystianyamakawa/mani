@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Equipamento_componentes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Equipamento</th>
+      <th>Componente</th>
+      <th>Quantidade</th>
+      <th>Created by</th>
+      <th>Updated by</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @equipamento_componentes.each do |equipamento_componente| %>
+      <tr>
+        <td><%= equipamento_componente.equipamento_id %></td>
+        <td><%= equipamento_componente.componente_id %></td>
+        <td><%= equipamento_componente.quantidade %></td>
+        <td><%= equipamento_componente.created_by %></td>
+        <td><%= equipamento_componente.updated_by %></td>
+        <td><%= link_to 'Show', equipamento_componente %></td>
+        <td><%= link_to 'Edit', edit_equipamento_componente_path(equipamento_componente) %></td>
+        <td><%= link_to 'Destroy', equipamento_componente, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Equipamento componente', new_equipamento_componente_path %>

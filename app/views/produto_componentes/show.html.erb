@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Produto pai:</strong>
+  <%= @produto_componente.produto_pai_id %>
+</p>
+
+<p>
+  <strong>Produto:</strong>
+  <%= @produto_componente.produto_id %>
+</p>
+
+<p>
+  <strong>Quantidade:</strong>
+  <%= @produto_componente.quantidade %>
+</p>
+
+<p>
+  <strong>Vl custo:</strong>
+  <%= @produto_componente.vl_custo %>
+</p>
+
+<p>
+  <strong>Created by:</strong>
+  <%= @produto_componente.created_by %>
+</p>
+
+<p>
+  <strong>Updated by:</strong>
+  <%= @produto_componente.updated_by %>
+</p>
+
+<%= link_to 'Edit', edit_produto_componente_path(@produto_componente) %> |
+<%= link_to 'Back', produto_componentes_path %>

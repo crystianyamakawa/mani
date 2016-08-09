@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Contrato_equipamentos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Contrato</th>
+      <th>Equipamento</th>
+      <th>Quantidade</th>
+      <th>Vl tabela</th>
+      <th>Vl negociado</th>
+      <th>Vl locacao</th>
+      <th>Dt inicio</th>
+      <th>Dt termino</th>
+      <th>Created by</th>
+      <th>Updated by</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @contrato_equipamentos.each do |contrato_equipamento| %>
+      <tr>
+        <td><%= contrato_equipamento.contrato_id %></td>
+        <td><%= contrato_equipamento.equipamento_id %></td>
+        <td><%= contrato_equipamento.quantidade %></td>
+        <td><%= contrato_equipamento.vl_tabela %></td>
+        <td><%= contrato_equipamento.vl_negociado %></td>
+        <td><%= contrato_equipamento.vl_locacao %></td>
+        <td><%= contrato_equipamento.dt_inicio %></td>
+        <td><%= contrato_equipamento.dt_termino %></td>
+        <td><%= contrato_equipamento.created_by %></td>
+        <td><%= contrato_equipamento.updated_by %></td>
+        <td><%= link_to 'Show', contrato_equipamento %></td>
+        <td><%= link_to 'Edit', edit_contrato_equipamento_path(contrato_equipamento) %></td>
+        <td><%= link_to 'Destroy', contrato_equipamento, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Contrato equipamento', new_contrato_equipamento_path %>

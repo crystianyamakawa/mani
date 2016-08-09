@@ -1,0 +1,67 @@
+<h3>Campanha</h3>
+<div class="panel panel-default">
+  <div class="panel-heading">Detalhe da Campanha
+    <span class="fa arrow" data-toggle="collapse" data-target="#panelDados" aria-expanded="true" aria-controls="panelDados"></span>
+    <!--button class="btn btn-default" type="button" -->
+  </div>
+  <div class="panel-body" id="panelDados">
+    <div class="row">
+          <div class="col-xs-6"><strong>Nome Campanha:</strong> <%= @campanha.nm_campanha %></div>
+          <div class="col-xs-6"><strong>Responsável:</strong> <%= @campanha.responsavel.first_name + " " + @campanha.responsavel.last_name %></div>
+    </div>
+
+    <div class="row">
+      </br>
+        <div class="col-xs-6"><strong>Inicio:</strong> <%= @campanha.dt_inicio.try(:strftime, "%d/%m/%Y %H:%M") %></div>
+        <div class="col-xs-6"><strong>Termino:</strong> <%= @campanha.dt_termino.try(:strftime, "%d/%m/%Y %H:%M") %></div>
+    </div>
+
+    <div class="row">
+      </br>
+        <div class="col-xs-6"><strong>Meta:</strong> <%= number_to_currency(@campanha.vl_meta) %></div>
+        <div class="col-xs-6"><strong>Atingido:</strong> <%= number_to_currency(@campanha.vl_atingido) %></div>
+    </div>
+    <div class="row">
+      </br>
+        <div class="col-xs-12"><strong>Obs:</strong> <%= @campanha.obs %></div>
+    </div>
+
+    <div class="row">
+      </br>
+        <div class="col-xs-6"><strong>Criado por:</strong> <%= @campanha.created_by %></div>
+        <div class="col-xs-6"><strong>Alterado por:</strong> <%= @campanha.updated_by%></div>
+    </div>
+
+    <div class="row">
+      </br>
+        <div class="col-xs-6"><strong>Criado em:</strong> <%= @campanha.created_at.try(:strftime, "%d/%m/%Y %H:%M") %></div>
+        <div class="col-xs-6"><strong>Alterado em:</strong> <%= @campanha.updated_at.try(:strftime, "%d/%m/%Y %H:%M")%></div>
+    </div>
+
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">Ofertas
+    <span class="fa arrow" data-toggle="collapse" data-target="#panelOferta" aria-expanded="true" aria-controls="panelOferta"></span>
+    <!--button class="btn btn-default" type="button" -->
+  </div>
+  <div class="panel-body" id="panelOferta">
+    <ol>
+      <% for oferta in @campanha.ofertas %>
+         <li><strong><%=h oferta.nm_oferta%> - <%= number_to_currency(oferta.vl_oferta)%></strong></li>
+           <ul>
+           <% for of in oferta.ofer_produtos %>
+              <li> <%= of.produto.descricao%> - <%= number_to_currency(of.vl_oferta)%></li>
+           <% end %>
+         </ul>
+         </br>
+      <% end %>
+    </ol>
+  </div>
+</div>
+
+
+
+<%= link_to 'Editar', edit_campanha_path(@campanha) %>
+<%= link_to 'Voltar', campanhas_path %>

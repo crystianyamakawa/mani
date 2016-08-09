@@ -1,0 +1,100 @@
+<!-- Single button -->
+<h3>Consulta de Equipamento: <%=@equipamento.descricao%>
+  <div class="btn-toolbar" role="toolbar" aria-label="...">
+    <div class="btn-group pull-right">
+      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Ações  <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <li><%= link_to 'Editar Equipamento', edit_equipamento_path(@equipamento) %></li>
+        <li><%= link_to 'Voltar Lista', equipamento_path %></li>
+        </ul>
+    </div>
+    <div class="btn-group  pull-right">
+      <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        Detalhes
+      </button>
+    </div>
+  </div>
+
+</h3>
+<div class=".container-fluid">
+    <div class="table-responsive">
+      <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th class="col-md-2"><strong>Descrição:</strong></th>
+                  <th class="col-md-4 text-left"><%= @equipamento.descricao %></th>
+                  <th class="col-md-2"><strong>Tipo:</strong></th>
+                  <th class="col-md-4"><%= @equipamento.tipo %></th>
+                  </tr>
+              </thead>
+              <tr>
+                    <td class="col-md-2"><strong>Marca:</strong></td>
+                    <td class="col-md-4 text-left"><%= @equipamento.marca.try(:nome) %></td>
+                    <td class="col-md-2"><strong>Modelo:</strong></td>
+                    <td class="col-md-4"><%= @equipamento.ds_modelo %></td>
+              </tr>
+              <tr>
+                <td class="col-md-2"><strong>Código</strong></td>
+                <td class="col-md-4 text-left"><%= @equipamento.codigo %></td>
+                <td class="col-md-2"><strong>Nr. Patrimonio:</strong></td>
+                <td class="col-md-4"><%=@equipamento.nr_patrimonio  %></td>
+              </tr>
+      </table>
+    </div>
+  </div>
+
+<div class="collapse" id="collapseExample">
+  <div class=".container-fluid">
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <tr>
+          <td class="col-md-2"><strong>Status:</strong></td>
+          <td class="col-md-4 text-left"><%= @equipamento.status %></td>
+          <td class="col-md-2"><strong>Estoque:</strong></td>
+          <td class="col-md-4"><%= @equipamento.estoque.try(:nome)%></td>
+        </tr>
+        <tr>
+            <td class="col-md-2"><strong>Categoria:</strong></td>
+            <td class="col-md-4 text-left"><%= @equipamento.categoriaequipamento.try(:nome) %></td>
+            <td class="col-md-2"><strong></strong></td>
+            <td class="col-md-4"></td>
+        </tr>
+        <tr>
+            <td class="col-md-2"><strong>Valor Aquisição:</strong></td>
+            <td class="col-md-4 text-left"><%= number_to_currency(@equipamento.vl_aquisicao)%></td>
+            <td class="col-md-2"><strong>Valor Venda:</strong></td>
+            <td class="col-md-4"><%= number_to_currency(@equipamento.vl_venda) %></td>
+        </tr>
+        <tr>
+            <td class="col-md-2"><strong>Valor Locação:</strong></td>
+            <td class="col-md-4 text-left"><%= number_to_currency(@equipamento.vl_locacao)%></td>
+            <td class="col-md-2"><strong>Unidade Locação:</strong></td>
+            <td class="col-md-4 "><%= @equipamento.unidade %></td>
+        </tr>
+        <tr>
+            <td class="col-md-2"><strong>Criado Por:</strong></td>
+            <td class="col-md-4 text-left"><%= @equipamento.created_by %></td>
+            <td class="col-md-2">  <strong>Atualizado Por:</strong></td>
+            <td class="col-md-4 "><%= @equipamento.updated_by %></td>
+        </tr>
+        <tr>
+            <td class="col-md-2"><strong>Criado Em:</strong></td>
+            <td class="col-md-4 text-left"><%= @equipamento.created_at.strftime("%d/%m/%Y %H:%M") %></td>
+            <td class="col-md-2">  <strong>Atualizado Em:</strong></td>
+            <td class="col-md-4 "><%= @equipamento.updated_at.strftime("%d/%m/%Y %H:%M") %></td>
+        </tr>
+        <tr>
+              <td class="col-md-2"><strong>Obs:</strong></td>
+              <td class="col-md-4 text-left"><%= @equipamento.obs %></td>
+              <td class="col-md-2"> </td>
+              <td class="col-md-4 "></td>
+
+        </tr>
+     </table>
+    </div>
+  </div>
+</div>
+</br>
+<%= render(:partial => "tabs", :locals => {:equipamento => @equipamento}) %>

@@ -1,0 +1,35 @@
+<h3>Ordens de Serviço</h3>
+
+<table id="tb_OS" class="display" cellspacing="0" width="100%">
+  <thead>
+    <tr>
+      <th>Nr protocolo</th>
+      <th>Nm contato</th>
+      <th>Status</th>
+      <th>Responsavel</th>
+      <th>Equipamento</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ordem_servicos.each do |ordem_servico| %>
+      <tr>
+        <td><%= ordem_servico.nr_protocolo %></td>
+        <td><%= ordem_servico.nm_contato %></td>
+        <td><%= ordem_servico.status %></td>
+        <td><%= ordem_servico.responsavel %></td>
+        <td><%= ordem_servico.equipamento.try(:descricao) %></td>
+        <td><%= link_to 'Mostrar', ordem_servico %>
+            <%= link_to 'Editar', edit_ordem_servico_path(ordem_servico) %>
+            <%= link_to 'Eliminar', ordem_servico, method: :delete, data: { confirm: 'Confirma Exclusão?' } %>
+        </td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nova Ordem Serviço', new_ordem_servico_path %>

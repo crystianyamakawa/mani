@@ -1,0 +1,43 @@
+<h3>Caracteristicas de Componente</h3>
+
+<div align="left">
+    <%= form_tag '', :method => :get do %>
+      <%= text_field_tag :codigo_caracteristica, nil, :placeholder =>'Informe Codigo...'  %>
+      <%= text_field_tag :nome_caracteristica, nil, :placeholder =>'Informe Caracteristica...'  %>
+      <!-- select_tag :status, @status,:prompt =>'Informe Status...' -->
+      <%= submit_tag 'Filtar Registros' %>
+    <% end %>
+   <hr>
+</div>
+<div class="container-fluid">
+  <div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Codigo</th>
+        <th>Descrição</th>
+        <th>Unidade</th>
+        <th colspan="3" class="text-center">Ações</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @caracteristicas.each do |caracteristica| %>
+        <tr>
+          <td><%= caracteristica.codigo %></td>
+          <td><%= caracteristica.descricao %></td>
+          <td><%= caracteristica.unidade %></td>
+          <td><%= link_to 'Mostrar', caracteristica %></td>
+          <td><%= link_to 'Editar', edit_caracteristica_path(caracteristica) %></td>
+          <td><%= link_to 'Eliminar', caracteristica, method: :delete, data: { confirm: 'Confirma Exclusão?' } %></td>
+        </tr>
+      <% end %>
+      </tbody>
+  </table>
+  </div>
+  <div class="text-center">
+      <%= will_paginate @caracteristicas %>
+  </div>
+
+  <%= link_to 'Novo Caracteristica', new_caracteristica_path %>
+</div>

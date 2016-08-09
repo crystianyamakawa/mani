@@ -1,0 +1,154 @@
+<h3>Atendimento
+  <div class="btn-group pull-right">
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Ações  <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+      <li><%= link_to 'Editar Atendimento', edit_atendimento_path(@atendimento) %></li>
+      <li><%=  link_to 'Gerar Ordem Serviço', { :action => 'gerar_os', :id => @atendimento.id}  %></li>
+      <li><a data-toggle="modal" data-target="#inboxModal">Encaminhar Inbox</a></li>
+
+      <li role="separator" class="divider"></li>
+      <li><%= link_to 'Voltar Lista Contratos', atendimentos_path %></li>
+      </ul>
+  </div>
+</h3>
+<div class="panel panel-default">
+  <div class="panel-heading">Identificação do Cliente
+    <span class="fa arrow" data-toggle="collapse" data-target="#panelDados" aria-expanded="true" aria-controls="panelDados"></span>
+    <!--button class="btn btn-default" type="button" -->
+  </div>
+  <div class="panel-body" id="panelDados">
+    <div class="row">
+          <div class="col-xs-4"><strong>Nome Contato:</strong> <%= @atendimento.nm_contato %></div>
+          <div class="col-xs-4"><strong>Tipo Retorno:</strong> <%= @atendimento.tp_retorno %></div>
+          <div class="col-xs-4"><strong>Retornar para:</strong>  <%= @atendimento.ds_retorno %></div>
+    </div>
+
+    <div class="row">
+    </br>
+        <div class="col-xs-4"><strong>Cliente:</strong> <%= @atendimento.cliente.try(:nome) %></div>
+        <div class="col-xs-4"><strong>Atendimento Pai:</strong> <%= @atendimento.atendimento_id %></div>
+      </div>
+
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">Detalhamento do Atendimento
+    <span class="fa arrow" data-toggle="collapse" data-target="#panelDetalhe" aria-expanded="false" aria-controls="panelDetalhe"></span>
+  </div>
+  <div class="panel-body" id="panelDetalhe" >
+
+    <div class="row">
+          <div class="col-xs-4"><strong>Motivo:</strong> <%= @atendimento.motivo.try(:descricao) %></div>
+          <div class="col-xs-4"><strong>Submotivo:</strong> <%= @atendimento.submotivo.try(:descricao) %></div>
+          <div class="col-xs-4"><strong>Status:</strong> <%= @atendimento.status %></div>
+    </div>
+
+    <div class="row">
+          </br>
+          <div class="col-xs-4"><strong>Equipamento:</strong> <%= @atendimento.equipamento.try(:descricao) %></div>
+          <div class="col-xs-4"><strong>Latitude:</strong> <%= @atendimento.lat %></div>
+          <div class="col-xs-4"><strong>Longitude:</strong> <%= @atendimento.long %></div>
+    </div>
+
+
+    <div class="row">
+          </br>
+          <div class="col-xs-4"><strong>Rua:</strong> <%= @atendimento.rua %></div>
+          <div class="col-xs-4"><strong>Numero:</strong> <%= @atendimento.nr_endereco %></div>
+          <div class="col-xs-4"><strong>Bairro:</strong> <%= @atendimento.bairro %></div>
+    </div>
+
+    <div class="row">
+          </br>
+          <div class="col-xs-4"><strong>Cidade:</strong> <%= @atendimento.cidade %></div>
+          <div class="col-xs-4"><strong>Cep:</strong> <%= @atendimento.cep %></div>
+          <div class="col-xs-4"><strong>UF:</strong> <%= @atendimento.uf %></div>
+    </div>
+
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">Dados de Fechamento
+    <span class="fa arrow" data-toggle="collapse" data-target="#panelResolucao" aria-expanded="true" aria-controls="panelResolucao"></span>
+  </div>
+  <div class="panel-body" id="panelResolucao" >
+    <div class="row">
+          <div class="col-xs-4"><strong>Resolução:</strong> <%= @atendimento.resolucao.try(:descricao)  %></div>
+          <div class="col-xs-4"><strong>Data Fechamento:</strong> <%= @atendimento.dt_fechamento.try(:strftime, "%d/%m/%Y %H:%M:%S") %></div>
+    </div>
+    <div class="row">
+    </br>
+          <div class="col-xs-2"><strong>Procedimentos:</strong></div>
+          <div class="col-xs-10"><%= @atendimento.resolucao.try(:obs_resolucao) %></div>
+    </div>
+
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">Notas
+    <span class="fa arrow" data-toggle="collapse" data-target="#panelOBS" aria-expanded="true" aria-controls="panelOBS"></span>
+  </div>
+  <div class="panel-body" id="panelOBS" >
+    <div class="row">
+          <div class="col-xs-2"><strong>Observações:</strong></div>
+          <div class="col-xs-10"><%= @atendimento.obs %></div>
+    </div>
+    <div class="row">
+            </br>
+            <div class="col-xs-2"><strong>Criado Por:</strong></div>
+            <div class="col-xs-2"><%= @atendimento.created_by %></div>
+            <div class="col-xs-2"><strong>Criado Em:</strong></div>
+            <div class="col-xs-2"><%= @atendimento.created_at.try(:strftime, "%d/%m/%Y %H:%M:%S") %></div>
+      </div>
+
+      <div class="row">
+            </br>
+            <div class="col-xs-2"><strong>Atualizado Por:</strong></div>
+            <div class="col-xs-2"><%= @atendimento.updated_by %></div>
+            <div class="col-xs-2"><strong>Atualizado Em:</strong></div>
+            <div class="col-xs-2"><%= @atendimento.updated_at.try(:strftime, "%d/%m/%Y %H:%M:%S") %></div>
+      </div>
+
+  </div>
+</div>
+
+<%= link_to 'Editar', edit_atendimento_path(@atendimento) %> |
+<%= link_to 'Voltar', atendimentos_path %>
+
+<!--################################################################################-->
+<!-- Modal Inbox -->
+<div class="modal fade" id="inboxModal" tabindex="-1" role="dialog" aria-labelledby="lbEncaminhar"  aria-hidden="true">
+  <div class="modal-dialog" >
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Cancelar"><span aria-hidden="true">&times;</span></button>
+         <h4 class="modal-title" >Encaminhar Inbox</h4>
+      </div>
+      <div class="modal-body">
+        <form >
+          <td><label for="recipient-name" class="control-label">Inbox:</label>
+          <select class="form-control" id="sel_inbox">
+              <option>ADMINISTRATIVO</option>
+              <option>FINANCEIRO</option>
+              <option>OFICINA</option>
+              <!-- <option>Dinheiro</option> -->
+          </select>
+          <td><input type="hidden" class="form-control" aria-hidden="true" id="atendimento_id" value = <%= @atendimento.id %>>
+
+          </td>
+      </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="button" id ="btnGerar" class="btn btn-primary" onclick="encaminhar_inbox();"
+                data-dismiss="modal">Encaminhar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ###################################################################### -->

@@ -1,0 +1,27 @@
+<p>
+  <strong>Codigo:</strong>
+  <%= @caracteristica.codigo %>
+</p>
+
+<p>
+  <strong>Descricao:</strong>
+  <%= @caracteristica.descricao %>
+</p>
+
+<p>
+  <strong>Unidade:</strong>
+  <%= @caracteristica.unidade %>
+</p>
+
+<p>
+  <strong>Created by:</strong>
+  <%= @caracteristica.created_by %>
+</p>
+
+<p>
+  <strong>Updated by:</strong>
+  <%= @caracteristica.updated_by %>
+</p>
+
+<%= link_to 'Edit', edit_caracteristica_path(@caracteristica) %> |
+<%= link_to 'Back', caracteristicas_path %>

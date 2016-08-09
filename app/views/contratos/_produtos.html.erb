@@ -1,0 +1,29 @@
+<div class="table-responsive">
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Produto</th>
+      <th class="text-center">Quantidade</th>
+      <th class="text-right">Valor Negociado</th>
+      <th class="text-center">Ações</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @contrato_produtos.each do |contrato_produto| %>
+      <tr>
+        <td><%= contrato_produto.produto.descricao %></td>
+        <td class="text-center"><%= contrato_produto.quantidade %></td>
+        <td class="text-right"><%= contrato_produto.vl_negociado %></td>
+        <td><%= link_to 'Mostrar', contrato_produto %></td>
+        <td><%= link_to 'Editar', edit_contrato_produto_path(contrato_produto) %></td>
+        <td><%= link_to 'Eliminar', contrato_produto, method: :delete, data: { confirm: 'Confirma a Exclusão?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<br>
+<p style="color=blue"><%= link_to( 'Novo Produto do Contrato',  {:controller =>'contrato_produtos', :action => 'new' , :contrato_id => @contrato.id}) %>
+
+</p>

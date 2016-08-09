@@ -1,0 +1,30 @@
+<h3>Processos de Venda</h3>
+
+<table id="tbProcessoVenda">
+  <thead>
+    <tr>
+      <th>Nome Processo</th>
+      <th>Responsável</th>
+      <th>Obs</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @processo_vendas.each do |processo_venda| %>
+      <tr>
+        <td><%= processo_venda.nm_processo %></td>
+        <td><%= processo_venda.responsavel.try(:first_name) +" "+ processo_venda.responsavel.try(:last_name)%></td>
+        <td><%= processo_venda.obs %></td>
+        <td><%= link_to 'Mostrar', processo_venda %>
+            <%= link_to 'Editar', edit_processo_venda_path(processo_venda) %>
+            <%= link_to 'Eliminar', processo_venda, method: :delete, data: { confirm: 'Confirma Exclusão?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Novo Processo venda', new_processo_venda_path %>

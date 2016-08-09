@@ -1,0 +1,70 @@
+<h2>Produto
+  <div class="btn-group pull-right">
+      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Ações  <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <li><%= link_to 'Editar Produto', edit_produto_path(@produto) %></li>
+        <li><%= link_to 'Voltar Lista Proutos', produtos_path %></li>
+        </ul>
+  </div>
+</h2>
+
+<div class="table-responsive ">
+<table class="table table-striped" >
+  <tr>
+    <td colspan="3"><strong>Tipo Produto:</strong></td>
+    <td colspan="10" class="text-left"><%= @produto.tipo%></td>
+    <td ><strong>Codigo:</strong></td>
+    <td colspan="15"><%= @produto.codigo %></td>
+  </tr>
+
+  <tr>
+      <td colspan="3"><strong>Marca:</strong></td>
+      <td colspan="10" class="text-left"><%= @produto.marca.try(:nome) %></td>
+      <td ><strong>Modelo:</strong></td>
+      <td colspan="15"><%= @produto.modelo %></td>
+  </tr>
+  <tr>
+    <td colspan="3"><strong>Descricao:</strong></td>
+    <td colspan="10" class="text-left"><%= @produto.descricao %></td>
+    <td ><strong>Unidade:</strong></td>
+    <td colspan="15"><%= @produto.unidade %></td>
+  </tr>
+  <tr>
+      <td colspan="3"><strong>Valor Custo:</strong></td>
+      <td colspan="10" class="text-left"><%= number_to_currency(@produto.vl_custo)%></td>
+      <td ><strong>Valor Venda:</strong></td>
+      <td colspan="15"><%= number_to_currency(@produto.vl_venda) %></td>
+  </tr>
+
+  <tr>
+      <!--td colspan="3"><strong>Categoria:</strong></td>
+      <td colspan="10" class="text-left"><%= @produto.categoria_pai_id%></td-->
+      <td colspan="3"><strong>Categoria:</strong></td>
+      <td colspan="10"><%= @produto.categoriaproduto.try(:nome) %></td>
+      <td ><strong>Estoque:</strong></td>
+      <td colspan="15" class="text-left"><%= @produto.estoque.try(:nome)%></td>  </tr>
+  <tr>
+      <td colspan="3"><strong>EAN:</strong></td>
+      <td colspan="10"><%= @produto.ean %></td>
+      <td ><strong>NCM:</strong></td>
+      <td colspan="15"><%= @produto.ncm %></td>
+
+  </tr>
+    <tr>
+          <td colspan="3"><strong>Criado Por:</strong></td>
+          <td colspan="10" class="text-left"><%= @produto.created_by %></td>
+          <td >  <strong>Atualizado Por:</strong></td>
+          <td colspan="15"><%= @produto.updated_by %></td>
+    <tr>
+    <tr>
+          <td colspan="3"><strong>Criado Em:</strong></td>
+          <td colspan="10" class="text-left"><%= @produto.created_at.try(:strftime, "%d/%m/%Y %H:%M:%S") %></td>
+          <td >  <strong>Atualizado Em:</strong></td>
+          <td colspan="15"><%= @produto.updated_at.try(:strftime, "%d/%m/%Y %H:%M:%S") %></td>
+    <tr>
+
+</table>
+</div>
+<%= render(:partial => "tabs", :locals => {:produto => @produto}) %>

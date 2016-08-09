@@ -1,0 +1,24 @@
+<h2>Valor</h2>
+</br>
+<p/>
+  <strong>Lista Valor:</strong>
+  <%= @lista_valor.nm_lista %>
+</p>
+
+<p>
+  <strong>Valor:</strong>
+  <%= @lista_valor.valor %>
+</p>
+
+<p>
+  <strong>Criado por:</strong>
+  <%= @lista_valor.created_by %>
+</p>
+
+<p>
+  <strong>Atualizado por:</strong>
+  <%= @lista_valor.updated_by %>
+</p>
+
+<%= link_to 'Editar', edit_lista_valor_path(@lista_valor) %> |
+<%= link_to 'Voltar', lista_valors_path %>

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Descricao:</strong>
+  <%= @resolucao.descricao %>
+</p>
+
+<p>
+  <strong>Status final:</strong>
+  <%= @resolucao.status_final %>
+</p>
+
+<p>
+  <strong>Obs resolucao:</strong>
+  <%= @resolucao.obs_resolucao %>
+</p>
+
+<p>
+  <strong>Created by:</strong>
+  <%= @resolucao.created_by %>
+</p>
+
+<p>
+  <strong>Updated by:</strong>
+  <%= @resolucao.updated_by %>
+</p>
+
+<%= link_to 'Edit', edit_resolucao_path(@resolucao) %> |
+<%= link_to 'Back', resolucaos_path %>

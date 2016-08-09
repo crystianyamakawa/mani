@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Descricao:</strong>
+  <%= @motivo.descricao %>
+</p>
+
+<p>
+  <strong>Motivo:</strong>
+  <%= @motivo.motivo_id %>
+</p>
+
+<p>
+  <strong>Setor 1:</strong>
+  <%= @motivo.setor_1 %>
+</p>
+
+<p>
+  <strong>Prazo 1:</strong>
+  <%= @motivo.prazo_1 %>
+</p>
+
+<p>
+  <strong>Setor 2:</strong>
+  <%= @motivo.setor_2 %>
+</p>
+
+<p>
+  <strong>Prazo 2:</strong>
+  <%= @motivo.prazo_2 %>
+</p>
+
+<p>
+  <strong>Setor 3:</strong>
+  <%= @motivo.setor_3 %>
+</p>
+
+<p>
+  <strong>Prazo 3:</strong>
+  <%= @motivo.prazo_3 %>
+</p>
+
+<p>
+  <strong>Obs:</strong>
+  <%= @motivo.obs %>
+</p>
+
+<p>
+  <strong>Created by:</strong>
+  <%= @motivo.created_by %>
+</p>
+
+<p>
+  <strong>Updated by:</strong>
+  <%= @motivo.updated_by %>
+</p>
+
+<%= link_to 'Edit', edit_motivo_path(@motivo) %> |
+<%= link_to 'Back', motivos_path %>
